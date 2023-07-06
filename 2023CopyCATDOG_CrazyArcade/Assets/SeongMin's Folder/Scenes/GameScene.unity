@@ -879,6 +879,7 @@ GameObject:
   - component: {fileID: 331625089}
   - component: {fileID: 331625088}
   - component: {fileID: 331625087}
+  - component: {fileID: 331625092}
   m_Layer: 0
   m_Name: TestMovingObject
   m_TagString: Untagged
@@ -1035,8 +1036,21 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &331625092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 331625086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e11d993a2d667245b14f09af8228b3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waterbomb_prefab: {fileID: 3286163095739512778, guid: 8bce674c8f8a0e5478d867b053acb7e0, type: 3}
 --- !u!1 &664017136
 GameObject:
   m_ObjectHideFlags: 0
@@ -1066,9 +1080,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3442ab867568044ab6be6345e4c62a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tile_size: 1
   ground: {fileID: 1197765283}
   blocks: {fileID: 111003435}
-  tile_size: 1
 --- !u!4 &664017138
 Transform:
   m_ObjectHideFlags: 0
@@ -1082,7 +1096,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1197765280
 GameObject:
@@ -2920,67 +2934,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1669743713
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2427158734105386719, guid: 8bce674c8f8a0e5478d867b053acb7e0, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2427158734105386719, guid: 8bce674c8f8a0e5478d867b053acb7e0, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2427158734105386719, guid: 8bce674c8f8a0e5478d867b053acb7e0, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2427158734105386719, guid: 8bce674c8f8a0e5478d867b053acb7e0, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2427158734105386719, guid: 8bce674c8f8a0e5478d867b053acb7e0, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2427158734105386719, guid: 8bce674c8f8a0e5478d867b053acb7e0, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2427158734105386719, guid: 8bce674c8f8a0e5478d867b053acb7e0, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2427158734105386719, guid: 8bce674c8f8a0e5478d867b053acb7e0, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2427158734105386719, guid: 8bce674c8f8a0e5478d867b053acb7e0, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2427158734105386719, guid: 8bce674c8f8a0e5478d867b053acb7e0, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2427158734105386719, guid: 8bce674c8f8a0e5478d867b053acb7e0, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3286163095739512778, guid: 8bce674c8f8a0e5478d867b053acb7e0, type: 3}
-      propertyPath: m_Name
-      value: WaterBomb
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 8bce674c8f8a0e5478d867b053acb7e0, type: 3}
 --- !u!1 &1842764894
 GameObject:
   m_ObjectHideFlags: 0
@@ -3025,5 +2978,5 @@ Transform:
   - {fileID: 1197765281}
   - {fileID: 111003433}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

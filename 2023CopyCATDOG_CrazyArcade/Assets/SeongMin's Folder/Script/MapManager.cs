@@ -10,7 +10,7 @@ public class MapManager: MonoBehaviour
     public static MapManager instance;
 
 
-    public float tile_size;
+    [HideInInspector]public float tile_size;
     Vector2Int map_size;
 
     Vector3 bottom_left_tile_pos;
