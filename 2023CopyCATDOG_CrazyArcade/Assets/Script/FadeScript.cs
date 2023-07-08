@@ -33,7 +33,6 @@ public class FadeScript : MonoBehaviour
             Panel.color = alpha;
             yield return null;
         }
-        yield return new WaitForSeconds(0.5f);
         GameManager.Inst.LoadMenuScene();
     }
 }
