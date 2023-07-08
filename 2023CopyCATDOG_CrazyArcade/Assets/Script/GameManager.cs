@@ -7,7 +7,7 @@ public class GameManager : Singleton<GameManager>
 {
     public Image Panel;
     float time = 0f;
-    float f_time = 1f;
+    float f_time = 0.4f;
     protected override void Awake()
     {
         base.Awake();
@@ -39,7 +39,6 @@ public class GameManager : Singleton<GameManager>
     {
         time = 0f;
         Color alpha = Panel.color;
-        yield return new WaitForSeconds(1f);
         while (alpha.a < 1f)
         {
             time += Time.deltaTime / f_time;
@@ -60,7 +59,6 @@ public class GameManager : Singleton<GameManager>
                 break;
         }
         time = 0f;
-        yield return new WaitForSeconds(1f);
         while (alpha.a > 0f)
         {
             time += Time.deltaTime / f_time;
@@ -69,20 +67,4 @@ public class GameManager : Singleton<GameManager>
             yield return null;
         }
     }
-    IEnumerator FadeOut()
-    {
-        time = 0f;
-        Color alpha = Panel.color;
-        yield return new WaitForSeconds(1f);
-        while (alpha.a > 0f)
-        {
-            time += Time.deltaTime / f_time;
-            alpha.a = Mathf.Lerp(1, 0, time);
-            Panel.color = alpha;
-            yield return null;
-        }
-    }
-
-
-
 }
