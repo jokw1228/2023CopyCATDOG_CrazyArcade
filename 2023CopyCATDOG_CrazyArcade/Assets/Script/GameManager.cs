@@ -8,6 +8,7 @@ public class GameManager : Singleton<GameManager>
     public Image Panel;
     float time = 0f;
     float f_time = 0.4f;
+    bool CheckCoroutine=false;
     protected override void Awake()
     {
         base.Awake();
@@ -16,17 +17,20 @@ public class GameManager : Singleton<GameManager>
     
     public void LoadMenuScene()
     {
-        StartCoroutine("Fade",0);
+        if(!CheckCoroutine)
+            StartCoroutine("Fade",0);
     }
 
     public void LoadGameScene()
     {
-        StartCoroutine("Fade",1);
+        if(!CheckCoroutine)
+            StartCoroutine("Fade",1);
     }
 
     public void LoadRuleScene()
     {
-        StartCoroutine("Fade",2);  
+        if(!CheckCoroutine)
+            StartCoroutine("Fade",2);  
     }
 
 
@@ -37,8 +41,10 @@ public class GameManager : Singleton<GameManager>
 
     IEnumerator Fade(int n)
     {
+        CheckCoroutine = true;
         time = 0f;
         Color alpha = Panel.color;
+        Panel.gameObject.SetActive(true);
         while (alpha.a < 1f)
         {
             time += Time.deltaTime / f_time;
@@ -66,5 +72,7 @@ public class GameManager : Singleton<GameManager>
             Panel.color = alpha;
             yield return null;
         }
+        Panel.gameObject.SetActive(false);
+        CheckCoroutine = false;
     }
 }

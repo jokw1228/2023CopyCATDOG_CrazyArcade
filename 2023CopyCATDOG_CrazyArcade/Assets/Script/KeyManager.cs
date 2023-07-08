@@ -10,10 +10,14 @@ public class KeyManager : MonoBehaviour
     KeyCode[] defaultKeys = new KeyCode[] { KeyCode.W, KeyCode.S, KeyCode.A, KeyCode.D,KeyCode.LeftShift,KeyCode.LeftControl, KeyCode.UpArrow, KeyCode.DownArrow, KeyCode.LeftArrow, KeyCode.RightArrow, KeyCode.RightShift, KeyCode.RightControl };
     private void Awake()
     {
-        for (int i = 0; i < (int)KeyAction.KEYCOUNT; i++)
+        KeyCode outValue;
+        if(!(KeySetting.keys.TryGetValue(KeyAction.UP1,out outValue)))
         {
-            KeySetting.keys.Add((KeyAction)i, defaultKeys[i]);
-            //for문을 통해서 defaultKeys에 저장된 배열을 순서대로 KeyAction에 값 추가
+            for (int i = 0; i < (int)KeyAction.KEYCOUNT; i++)
+            {
+                KeySetting.keys.Add((KeyAction)i, defaultKeys[i]);
+                //for문을 통해서 defaultKeys에 저장된 배열을 순서대로 KeyAction에 값 추가
+            }
         }
     }
     private void OnGUI()
