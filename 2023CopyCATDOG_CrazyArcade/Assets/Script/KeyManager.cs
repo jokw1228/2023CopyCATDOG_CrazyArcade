@@ -1,13 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public enum KeyAction { UP1, DOWN1, LEFT1, RIGHT1,BALL1, ITEM1, UP2, DOWN2, LEFT2, RIGHT2, BALL2, ITEM2, KEYCOUNT }
+public enum KeyAction { UP1, DOWN1, LEFT1, RIGHT1, BALL1, ITEM1, UP2, DOWN2, LEFT2, RIGHT2, BALL2, ITEM2, KEYCOUNT }
 //열거형의 실제 사용하는 값의 개수와 같음.​
 public static class KeySetting { public static Dictionary<KeyAction, KeyCode> keys = new Dictionary<KeyAction, KeyCode>(); }
 //KeyAction과 KeyCode를 key값과 value값으로 한 딕셔너리 생성
 public class KeyManager : MonoBehaviour
 {
-    KeyCode[] defaultKeys = new KeyCode[] { KeyCode.W, KeyCode.S, KeyCode.A, KeyCode.D,KeyCode.LeftShift,KeyCode.LeftControl, KeyCode.UpArrow, KeyCode.DownArrow, KeyCode.LeftArrow, KeyCode.RightArrow, KeyCode.RightShift, KeyCode.RightControl };
+    KeyCode[] defaultKeys = new KeyCode[] { KeyCode.W, KeyCode.S, KeyCode.A, KeyCode.D, KeyCode.LeftShift, KeyCode.LeftControl, KeyCode.UpArrow, KeyCode.DownArrow, KeyCode.LeftArrow, KeyCode.RightArrow, KeyCode.RightShift, KeyCode.RightControl };
     private void Awake()
     {
         KeyCode outValue;
