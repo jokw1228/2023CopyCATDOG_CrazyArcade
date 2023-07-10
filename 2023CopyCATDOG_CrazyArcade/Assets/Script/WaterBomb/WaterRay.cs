@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class WaterRay : MonoBehaviour
+public class WaterRay : InteractableObject
 {
     public enum Direction
     {
@@ -15,13 +15,12 @@ public class WaterRay : MonoBehaviour
     public double life_span;
     double timer = 0.0;
 
-    Vector2Int cell_index;
-
     private void Start()
     {
         cell_index = MapManager.instance.GetClosestCellIndex(new Vector2(transform.position.x, transform.position.y));
+        state = TileInfo.State.water_ray;
 
-        MapManager.instance.tile_infos[cell_index.x, cell_index.y].AddState(TileInfo.State.water_ray);
+        MapManager.instance.tile_infos[cell_index.x, cell_index.y].AddState(state);
     }
 
     // Update is called once per frame

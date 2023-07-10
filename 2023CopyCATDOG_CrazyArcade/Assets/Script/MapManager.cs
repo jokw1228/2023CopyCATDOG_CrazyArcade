@@ -17,6 +17,16 @@ public class MapManager: MonoBehaviour
 
     //현재 타일 정보를 담는 2차원 배열, 해당 타일에 물줄기, 아이템 등이 있는지 저장하는 역할을 함
     public TileInfo[,] tile_infos;
+    public TileInfo GetTileInfo(Vector2Int index)
+    {
+        return tile_infos[index.x, index.y];
+    }
+    public TileInfo GetClosestTileInfo(Vector2 position)
+    {
+        Vector2Int index = GetClosestCellIndex(position);
+        return tile_infos[index.x, index.y];
+    }
+
 
     [SerializeField] Tilemap ground;
     [SerializeField] Tilemap blocks;

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using Unity.Collections;
 using UnityEngine;
 
-public class WaterBomb : MonoBehaviour
+public class WaterBomb : InteractableObject
 {
-    static int num_of_cur_water_bomb = 0;
+    public static int num_of_cur_water_bomb = 0;
 
     public float bomb_time;
     public int bomb_range;
@@ -13,14 +13,13 @@ public class WaterBomb : MonoBehaviour
     public float water_ray_life_span;
     public GameObject water_ray_prefab;
 
-    Vector2Int cell_index;
-
     // Start is called before the first frame update
     void Start()
     {
         cell_index = MapManager.instance.GetClosestCellIndex(new Vector2(transform.position.x, transform.position.y));
+        state = TileInfo.State.water_bomb;
 
-        MapManager.instance.tile_infos[cell_index.x, cell_index.y].AddState(TileInfo.State.water_bomb);
+        MapManager.instance.tile_infos[cell_index.x, cell_index.y].AddState(state);
         num_of_cur_water_bomb++;
         StartCoroutine(Bomb());
     }
