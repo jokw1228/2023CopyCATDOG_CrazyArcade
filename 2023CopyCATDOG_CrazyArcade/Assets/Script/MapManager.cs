@@ -44,9 +44,8 @@ public class MapManager: MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
-    private void Start()
-    {
+
+
         tile_size = ground.cellSize.x;
         map_size = (Vector2Int)ground.size;
 
