@@ -63,7 +63,7 @@ public class Player1 : MonoBehaviour
             pposition= MapManager.instance.GetClosestCellPosition(transform.position);
             cur_tile_info = MapManager.instance.GetClosestTileInfo(transform.position);
 
-            if (Input.GetKey(KeySetting.keys[KeyAction.BALL1]))
+            if (Input.GetKeyDown(KeySetting.keys[KeyAction.BALL1]))
             {
                 if (WaterBomb.num_of_cur_water_bomb < water_bomb_max + balloon_item)
                     GenerateWaterBomb(pposition, ballon_range + range_item);//물풍선 오브젝트 생성<-ppostion+object 생성 명령어
@@ -86,6 +86,9 @@ public class Player1 : MonoBehaviour
         {
 
             ballon_timer += Time.deltaTime;
+
+            GetComponent<SpriteRenderer>().color = Color.blue;
+
             if (ballon_touched==true) 
             {
                 player_state = 2;
