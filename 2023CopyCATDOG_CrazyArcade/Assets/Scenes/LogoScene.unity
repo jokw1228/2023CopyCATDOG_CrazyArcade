@@ -637,6 +637,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Panel: {fileID: 1629595594}
   PauseMenu: {fileID: 1230341286}
+  characters:
+  - prefeb: {fileID: 4304165624070685898, guid: 9b6c6fcf1053b8449b9e82da659c0a34, type: 3}
+    name: Dao
+    Icon: {fileID: 21300000, guid: 69c8724e00e3ea742ada90a5990129da, type: 3}
+  - prefeb: {fileID: 6880785089939925754, guid: 8a9bb09983dccfb4ba530e77e2676593, type: 3}
+    name: Bazzi
+    Icon: {fileID: 21300000, guid: 4938d416cd4c97b459ae58a9498df74c, type: 3}
+  - prefeb: {fileID: 1208607045757790410, guid: 375e698ce4791f94eaa76c98946b2154, type: 3}
+    name: Uni
+    Icon: {fileID: 21300000, guid: d7445f73b4376064687f2e1ac49fbc39, type: 3}
+  currentPlayer1Character:
+    prefeb: {fileID: 0}
+    name: 
+    Icon: {fileID: 0}
+  currentPlayer2Character:
+    prefeb: {fileID: 0}
+    name: 
+    Icon: {fileID: 0}
 --- !u!4 &956106474
 Transform:
   m_ObjectHideFlags: 0

@@ -12,6 +12,31 @@ public class GameManager : Singleton<GameManager>
 
     public static bool GameIsPaused = false;
     public GameObject PauseMenu;
+    public Character[] characters;
+    public Character currentPlayer1Character;
+    public Character currentPlayer2Character;
+
+    private void Start()
+    {
+        if (characters.Length > 0 && currentPlayer1Character == null)
+        {
+            currentPlayer1Character = characters[0];
+        }
+        if (characters.Length > 0 && currentPlayer2Character == null)
+        {
+            currentPlayer2Character = characters[0];
+        }
+    }
+
+    public void SetPlayer1Character(Character character)
+    {
+        currentPlayer1Character = character;
+    }
+    public void SetPlayer2Character(Character character)
+    {
+        currentPlayer2Character = character;
+    }
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -64,6 +89,12 @@ public class GameManager : Singleton<GameManager>
             StartCoroutine("Fade",2);  
     }
 
+    public void LoadCharacterScene()
+    {
+        if (!CheckCoroutine)
+            StartCoroutine("Fade", 3);
+    }
+
 
     public void Exit()
     {
@@ -93,6 +124,9 @@ public class GameManager : Singleton<GameManager>
                 break;
             case 2:
                 SceneManager.LoadScene("RuleScene");
+                break;
+            case 3:
+                SceneManager.LoadScene("CharacterScene");
                 break;
         }
         time = 0f;
