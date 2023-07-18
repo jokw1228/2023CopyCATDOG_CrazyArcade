@@ -34,6 +34,7 @@ public class MapManager: MonoBehaviour
 
     [SerializeField] Tilemap ground;
     [SerializeField] Tilemap blocks;
+    public ItemGenerator item_generator;
 
     //List<GameObject> boxes;
     //List<GameObject> waterbombs;

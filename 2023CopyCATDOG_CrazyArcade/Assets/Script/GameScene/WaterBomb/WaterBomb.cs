@@ -100,12 +100,17 @@ public class WaterBomb : InteractableObject
         else if(tile_info.CheckState(TileInfo.State.box))
         {
             isDirectionBlocked[d] = true;
-            //상자 파괴 및 아이템 스폰
+            tile_info.get_box.Remove();
         }
         else if(tile_info.CheckState(TileInfo.State.water_bomb))
         {
             isDirectionBlocked[d] = true;
             tile_info.get_water_bomb.Bomb();   
+        }
+        else if (tile_info.CheckState(TileInfo.State.item))
+        {
+            isDirectionBlocked[d] = true;
+            tile_info.get_item.Remove();
         }
         else
         {

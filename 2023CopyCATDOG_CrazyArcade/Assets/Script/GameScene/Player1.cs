@@ -83,7 +83,7 @@ public class Player1 : MonoBehaviour
                player_state = 1;
                 Debug.Log("Hit");
             }
-            if(cur_tile_info.HaveItem())
+            if(cur_tile_info.CheckState(TileInfo.State.item))
             {
                 cur_tile_info.UseItem(this);
             }

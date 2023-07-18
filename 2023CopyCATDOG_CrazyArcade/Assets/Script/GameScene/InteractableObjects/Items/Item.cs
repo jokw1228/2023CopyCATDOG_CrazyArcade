@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Item { bubble, roller, fluid }
+public enum Item { none, bubble, roller, fluid }
 
 public interface IItem
 {
