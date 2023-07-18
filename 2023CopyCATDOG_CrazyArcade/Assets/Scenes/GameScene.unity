@@ -133,9 +133,9 @@ GameObject:
   m_Component:
   - component: {fileID: 47855157}
   - component: {fileID: 47855156}
-  - component: {fileID: 47855158}
   - component: {fileID: 47855159}
   - component: {fileID: 47855160}
+  - component: {fileID: 47855161}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Untagged
@@ -210,19 +210,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &47855158
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 47855155}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be31b1ab5851e074f8eabfeca454a3d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waterbomb_prefab: {fileID: 3286163095739512778, guid: 8bce674c8f8a0e5478d867b053acb7e0, type: 3}
 --- !u!61 &47855159
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -295,6 +282,30 @@ Rigidbody2D:
   m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &47855161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 47855155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6649725fd0fea0e458a6c4f23adabbe6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waterbomb_prefab: {fileID: 3286163095739512778, guid: 8bce674c8f8a0e5478d867b053acb7e0, type: 3}
+  player_state: 0
+  ballon_range: 1
+  range_item: 0
+  water_bomb_max: 1
+  balloon_item: 0
+  speed_item: 0
+  speed: 5
+  ballon_timer: 0
+  ballon_touched: 0
+  pposition: {x: 0, y: 0}
+  pindex: {x: 0, y: 0}
 --- !u!1 &111003432
 GameObject:
   m_ObjectHideFlags: 0
