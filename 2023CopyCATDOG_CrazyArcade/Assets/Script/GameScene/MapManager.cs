@@ -17,6 +17,10 @@ public class MapManager: MonoBehaviour
 
     //현재 타일 정보를 담는 2차원 배열, 해당 타일에 물줄기, 아이템 등이 있는지 저장하는 역할을 함
     public TileInfo[,] tile_infos;
+    public Vector3 GetCellPosition(Vector2Int cell_index)
+    {
+        return new Vector3(bottom_left_tile_pos.x + tile_size * cell_index.x, bottom_left_tile_pos.y + tile_size * cell_index.y, 0);
+    }
     public TileInfo GetTileInfo(Vector2Int index)
     {
         return tile_infos[index.x, index.y];
@@ -57,6 +61,7 @@ public class MapManager: MonoBehaviour
             for (int j = 0; j < map_size.x; j++)
             {
                 tile_infos[j, i] = new TileInfo();
+                if(blocks.HasTile(blocks.origin + new Vector3Int(j, i, 0))) { tile_infos[j, i].AddState(TileInfo.State.wall);}
             }
         }
     }
@@ -138,7 +143,7 @@ public class MapManager: MonoBehaviour
         {
             for(int j = 0; j < map_size.x; j++)
             {
-                s += tile_infos[j, i].GetState(TileInfo.State.water_bomb) + " " + tile_infos[j, i].GetState(TileInfo.State.water_ray) + "|";
+                s += tile_infos[j, i].CheckState(TileInfo.State.wall) + "|";
             }
             s += "\n";
         }

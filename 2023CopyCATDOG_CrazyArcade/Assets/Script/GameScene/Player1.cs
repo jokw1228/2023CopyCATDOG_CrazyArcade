@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 
 public class Player1 : MonoBehaviour
@@ -66,13 +67,18 @@ public class Player1 : MonoBehaviour
             if (Input.GetKeyDown(KeySetting.keys[KeyAction.BALL1]))
             {
                 if (WaterBomb.num_of_cur_water_bomb < water_bomb_max + balloon_item)
-                    GenerateWaterBomb(pposition, ballon_range + range_item);//물풍선 오브젝트 생성<-ppostion+object 생성 명령어
-                else {
+                {
+                    //목표 위치에 오브젝트(벽, 상자, 물폭탄, 물줄기, 아이템 등)가 없을 경우에만 물폭탄 설치, 해당 조건 확인 필요
+                    if(MapManager.instance.GetClosestTileInfo(pposition).CheckState(TileInfo.State.none))
+                        GenerateWaterBomb(pposition, ballon_range + range_item);//물풍선 오브젝트 생성<-ppostion+object 생성 명령어
+                }
+                else
+                {
                     //물폭탄이 필드에 최대 갯수만큼 설치되어 있을 경우의 코드
                 }
             }
 
-            if (cur_tile_info.GetState(TileInfo.State.water_ray))
+            if (cur_tile_info.CheckState(TileInfo.State.water_ray))
             {
                player_state = 1;
                 Debug.Log("Hit");
