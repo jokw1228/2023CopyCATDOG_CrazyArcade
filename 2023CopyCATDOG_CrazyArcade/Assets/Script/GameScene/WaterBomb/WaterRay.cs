@@ -20,7 +20,7 @@ public class WaterRay : InteractableObject
         cell_index = MapManager.instance.GetClosestCellIndex(new Vector2(transform.position.x, transform.position.y));
         state = TileInfo.State.water_ray;
 
-        MapManager.instance.tile_infos[cell_index.x, cell_index.y].AddState(state);
+        MapManager.instance.GetTileInfo(cell_index).AddState(state);
     }
 
     // Update is called once per frame
@@ -33,9 +33,8 @@ public class WaterRay : InteractableObject
             Destroy(gameObject);
         }
     }
-    public void Gernerate(Vector3 pos, Direction d, float life_span)
+    public void Gernerate(Vector3 pos, Direction d)
     {
-        gameObject.GetComponent<WaterRay>().life_span = life_span;
         GameObject water_ray = Instantiate<GameObject>(gameObject, pos, Quaternion.Euler(0,0,-90 * (int)d));
         water_ray.GetComponent<SpriteRenderer>().sprite = sprite; 
     }
