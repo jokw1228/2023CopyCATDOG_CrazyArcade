@@ -16,8 +16,10 @@ public class TileInfo
         item1      = 0b0000_1000, bubble = 0b0000_1000, inventory_size_up  = 0b0000_1000,
         item2      = 0b0001_0000, roller = 0b0001_0000, speed_up           = 0b0001_0000,
         item3      = 0b0010_0000, fluid  = 0b0010_0000, water_ray_range_up = 0b0010_0000,
+        item4       = 0b0011_0000, needle   = 0b0011_0000, needle_increase  = 0b0011_0000, 
+        item5       = 0b0100_0000, turtle   = 0b0100_0000, 
 
-        items = item1 + item2 + item3,
+        items = item1 + item2 + item3 + item4 + item5,
     }
 
     State state = State.none;
