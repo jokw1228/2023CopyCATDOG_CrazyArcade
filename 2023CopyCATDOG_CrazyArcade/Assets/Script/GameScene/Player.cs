@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
     //º¯¼öµé
     public enum State
     {
-        Playing=0, Imprisoned=1, Destroying=2, Immune=3
+        Playing=0, Imprisoned=1, Destroying=2, Immune=3, Turtle=4
     }
 
     public State player_state = 0; //state
@@ -127,5 +127,13 @@ public class Player : MonoBehaviour
     public void SpeedUp()
     {
         speed_item++;
+    }
+    public void NeedleIncrease()
+    {
+
+    }
+    public void Turtle()
+    {
+
     }
 }
