@@ -17,9 +17,9 @@ public class Turtle : InteractableObject, IItem
     void Start()
     {
         cell_index = MapManager.instance.GetClosestCellIndex(new Vector2(transform.position.x, transform.position.y));
-        state = TileInfo.State.turtle;
+        state = TileInfo.State.item;
 
-        MapManager.instance.GetTileInfo(cell_index).AddItem(state, this);
+        MapManager.instance.GetTileInfo(cell_index).AddItem(this);
     }
 
     // Update is called once per frame
