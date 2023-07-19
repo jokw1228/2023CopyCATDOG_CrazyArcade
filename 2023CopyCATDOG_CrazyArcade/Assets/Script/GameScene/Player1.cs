@@ -16,15 +16,15 @@ public class Player1 : MonoBehaviour
     //state
     int player_state = 0;
 
-    int ballon_range = 1;
+    public int ballon_range = 1;
     int range_item = 0;
 
-    int water_bomb_max = 1;
+    public int water_bomb_max = 1;
     int balloon_item = 0;
 
     const float basic_speed = 5;
     int speed_item = 0;
-    float speed = basic_speed;
+    public float speed = basic_speed;
     
     const float speed_increase = 1;
 
