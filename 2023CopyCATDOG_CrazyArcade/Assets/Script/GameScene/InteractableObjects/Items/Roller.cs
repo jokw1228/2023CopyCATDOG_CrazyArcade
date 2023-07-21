@@ -6,7 +6,7 @@ public class Roller : InteractableObject, IItem
 {
     const float speed_increase = 1.0f;
 
-    void IItem.OnGetItem(Player1 player)
+    void IItem.OnGetItem(Player player)
     {
         player.SpeedUp();
     }

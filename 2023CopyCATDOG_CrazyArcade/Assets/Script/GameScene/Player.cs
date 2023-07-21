@@ -143,22 +143,9 @@ public class Player : MonoBehaviour
     }
     public void Bush()
     {
-        bush_timer += Time.deltaTime;
-        while (bush_timer <= 1)
-        {
-            Color color = GetComponent<SpriteRenderer>().color;
-            color.a = 0.0f;
-            GetComponent<SpriteRenderer>().color = color;
-        }
-        if(bush_timer > 1)
-        {
-            Color color = GetComponent<SpriteRenderer>().color;
-            color.a = 1.0f;
-            GetComponent<SpriteRenderer>().color = color;
-        }
-    }
-    public void Bush_zero()
-    {
-        bush_timer = 0;
+        Debug.Log("bush");
+        Color color = GetComponent<SpriteRenderer>().color;
+        color.a = 0.0f;
+        GetComponent<SpriteRenderer>().color = color;
     }
 }

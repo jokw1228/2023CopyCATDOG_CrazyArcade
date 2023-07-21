@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Turtle : InteractableObject, IItem
 {
-    void IItem.OnGetItem(Player1 player)
+    void IItem.OnGetItem(Player player)
     {
         player.Turtle();
     }

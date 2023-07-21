@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class Bush : InteractableObject, IItem
 {
-    void IItem.OnGetItem(Player1 player)
+    void IItem.OnGetItem(Player player)
     {
-        player.Bush_zero();
         player.Bush();
     }
     void IItem.Remove()
