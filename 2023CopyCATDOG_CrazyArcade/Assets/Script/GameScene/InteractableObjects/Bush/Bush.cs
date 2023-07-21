@@ -2,16 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Needle : InteractableObject, IItem
+public class Bush : InteractableObject, IItem
 {
     void IItem.OnGetItem(Player1 player)
     {
-        player.NeedleIncrease();
+        player.Bush_zero();
+        player.Bush();
     }
     void IItem.Remove()
     {
-        MapManager.instance.GetTileInfo(cell_index).DelItem();
-        Destroy(gameObject);
+
     }
 
     // Start is called before the first frame update
@@ -26,6 +26,6 @@ public class Needle : InteractableObject, IItem
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 }

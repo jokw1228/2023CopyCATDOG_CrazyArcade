@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
     //º¯¼öµé
     public enum State
     {
-        Playing=0, Imprisoned=1, Destroying=2, Immune=3, Turtle=4
+        Playing=0, Imprisoned=1, Destroying=2, Immune=3, Turtle=4, Pirate=5, Standby=6
     }
 
     public State player_state = 0; //state
@@ -36,7 +36,8 @@ public class Player : MonoBehaviour
     public int needle = 1;
 
     public bool ballon_touched =false;
-    
+
+    public float bush_timer = 0;
 
     public Vector2 pposition;
     public Vector2Int pindex;
@@ -130,10 +131,34 @@ public class Player : MonoBehaviour
     }
     public void NeedleIncrease()
     {
-
+        needle++;  
     }
     public void Turtle()
     {
-
+        player_state = State.Turtle;
+    }
+    public void Pirate()
+    {
+        player_state = State.Pirate;
+    }
+    public void Bush()
+    {
+        bush_timer += Time.deltaTime;
+        while (bush_timer <= 1)
+        {
+            Color color = GetComponent<SpriteRenderer>().color;
+            color.a = 0.0f;
+            GetComponent<SpriteRenderer>().color = color;
+        }
+        if(bush_timer > 1)
+        {
+            Color color = GetComponent<SpriteRenderer>().color;
+            color.a = 1.0f;
+            GetComponent<SpriteRenderer>().color = color;
+        }
+    }
+    public void Bush_zero()
+    {
+        bush_timer = 0;
     }
 }

@@ -10,6 +10,7 @@ public class Turtle : InteractableObject, IItem
     }
     void IItem.Remove()
     {
+        MapManager.instance.GetTileInfo(cell_index).DelItem();
         Destroy(gameObject);
     }
 
