@@ -16,6 +16,8 @@ public class Player1 : Player
     bool RIGHT1_key = false;
     bool LEFT1_key = false;
 
+    private Player2 Opposite;
+
     void Update()
     {
         if (player_state == State.Playing)          //«√∑π¿Ã
@@ -144,8 +146,10 @@ public class Player1 : Player
         }
 
         else if (player_state == State.Destroying)  //ªÁ∏¡
-        { 
+        {
             Destroy(gameObject);
+            Opposite = GameObject.Find("Player2").GetComponent<Player2>();
+            Opposite.player_state = State.Endgame;
         }
 
         else if (player_state == State.Immune)      //π´¿˚=>π∞«≥º± ≈ª√‚ Ω√ ªÁøÎ
@@ -154,6 +158,7 @@ public class Player1 : Player
 
             if (ballon_timer >= 1)
             {
+                ballon_timer = 0;
                 player_state = State.Playing;
             }
         }
@@ -364,6 +369,20 @@ public class Player1 : Player
             }
         }
 
+        else if (player_state == State.Standby)
+        {
+            ballon_timer += Time.deltaTime;
+            Debug.Log("Stand");
+            if (ballon_timer >= 5)
+            {
+                ballon_timer = 0;
+                player_state = State.Playing;
+            }
+        }
 
+        else if (player_state == State.Endgame)
+        {
+
+        }
     }
 }

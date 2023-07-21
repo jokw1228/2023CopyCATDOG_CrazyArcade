@@ -15,10 +15,10 @@ public class Player : MonoBehaviour
     //º¯¼öµé
     public enum State
     {
-        Playing=0, Imprisoned=1, Destroying=2, Immune=3, Turtle=4, Pirate=5, Standby=6
+        Playing=0, Imprisoned=1, Destroying=2, Immune=3, Turtle=4, Pirate=5, Standby=6, Endgame=7
     }
 
-    public State player_state = 0; //state
+    public State player_state = State.Standby; //state
 
     public int ballon_range = 1;
     public int range_item = 0;
@@ -143,8 +143,8 @@ public class Player : MonoBehaviour
     }
     public void Bush()
     {
-        Debug.Log("bush");
         Color color = GetComponent<SpriteRenderer>().color;
+        Debug.Log("bush");
         color.a = 0.0f;
         GetComponent<SpriteRenderer>().color = color;
     }
