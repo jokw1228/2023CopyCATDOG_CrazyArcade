@@ -109,8 +109,8 @@ public class WaterBomb : InteractableObject
         }
         else if (tile_info.CheckState(TileInfo.State.item))
         {
-            isDirectionBlocked[d] = true;
             tile_info.get_item.Remove();
+            water_ray.Gernerate(MapManager.instance.GetCellPosition(target_cell_index), d);
         }
         else
         {
