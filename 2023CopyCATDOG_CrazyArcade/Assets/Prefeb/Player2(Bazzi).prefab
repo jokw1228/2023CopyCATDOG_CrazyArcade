@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4926619019398364804}
   - component: {fileID: 91848458848360849}
-  - component: {fileID: 8725125064902424109}
   - component: {fileID: 7415708549607978442}
   - component: {fileID: 8815346062522707581}
+  - component: {fileID: 3814543505653946427}
   m_Layer: 0
-  m_Name: Bazzi
+  m_Name: Player2(Bazzi)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,7 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &91848458848360849
 SpriteRenderer:
@@ -87,22 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8725125064902424109
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6880785089939925754}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be31b1ab5851e074f8eabfeca454a3d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waterbomb_prefab: {fileID: 3286163095739512778, guid: 8bce674c8f8a0e5478d867b053acb7e0, type: 3}
-  ballon_range: 1
-  water_bomb_max: 1
-  speed: 5
 --- !u!61 &7415708549607978442
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -175,3 +159,28 @@ Rigidbody2D:
   m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &3814543505653946427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6880785089939925754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6649725fd0fea0e458a6c4f23adabbe6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waterbomb_prefab: {fileID: 3286163095739512778, guid: 8bce674c8f8a0e5478d867b053acb7e0, type: 3}
+  player_state: 0
+  ballon_range: 1
+  range_item: 0
+  water_bomb_max: 1
+  balloon_item: 0
+  speed_item: 0
+  speed: 5
+  ballon_timer: 0
+  needle: 1
+  ballon_touched: 0
+  pposition: {x: 0, y: 0}
+  pindex: {x: 0, y: 0}

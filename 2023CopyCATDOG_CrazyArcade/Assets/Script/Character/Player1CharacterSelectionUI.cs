@@ -8,7 +8,7 @@ public class Player1CharacterSelectionUI : MonoBehaviour
 
     private void Start()
     {
-        foreach(Character c in GameManager.Inst.characters)
+        foreach(Character c in GameManager.Inst.characters1)
         {
             GameObject option = Instantiate(optionPrefab, transform);
             Button button = option.GetComponent<Button>();
