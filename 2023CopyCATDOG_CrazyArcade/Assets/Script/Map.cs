@@ -3,9 +3,9 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [Serializable]
-public class Character
+public class Map
 {
-    public GameObject prefab;
+    public int a;
     public string name;
     public Sprite Icon;
 }

@@ -12,19 +12,29 @@ public class GameManager : Singleton<GameManager>
 
     public static bool GameIsPaused = false;
     public GameObject PauseMenu;
-    public Character[] characters;
+    public GameObject GameOverMenu;
+
+    public Character[] characters1;
+    public Character[] characters2;
+    public Map[] selectmap;
+
     public Character currentPlayer1Character;
     public Character currentPlayer2Character;
+    public Map currentMap;
 
     private void Start()
     {
-        if (characters.Length > 0 && currentPlayer1Character == null)
+        if (characters1.Length > 0)
         {
-            currentPlayer1Character = characters[0];
+            currentPlayer1Character = characters1[0];
         }
-        if (characters.Length > 0 && currentPlayer2Character == null)
+        if (characters2.Length > 0)
         {
-            currentPlayer2Character = characters[0];
+            currentPlayer2Character = characters2[0];
+        }
+        if (selectmap.Length > 0)
+        {
+            currentMap = selectmap[0];
         }
     }
 
@@ -35,6 +45,10 @@ public class GameManager : Singleton<GameManager>
     public void SetPlayer2Character(Character character)
     {
         currentPlayer2Character = character;
+    }
+    public void SetMap(Map map)
+    {
+        currentMap = map;
     }
 
     void Update()
@@ -57,6 +71,7 @@ public class GameManager : Singleton<GameManager>
         Time.timeScale = 1f;
         GameIsPaused = false;
         PauseMenu.SetActive(false);
+        GameOverMenu.SetActive(false);
     }
 
     public void Pause()
@@ -64,6 +79,12 @@ public class GameManager : Singleton<GameManager>
         Time.timeScale = 0f;
         GameIsPaused = true;
         PauseMenu.SetActive(true);
+    }
+    public void GameOver()
+    {
+        Time.timeScale = 0f;
+        GameIsPaused = true;
+        GameOverMenu.SetActive(true);
     }
     protected override void Awake()
     {
@@ -77,22 +98,32 @@ public class GameManager : Singleton<GameManager>
             StartCoroutine("Fade",0);
     }
 
-    public void LoadGameScene()
+    public void LoadGameScene1()
     {
         if(!CheckCoroutine)
             StartCoroutine("Fade",1);
+    }
+    public void LoadGameScene2()
+    {
+        if (!CheckCoroutine)
+            StartCoroutine("Fade", 2);
+    }
+    public void LoadGameScene3()
+    {
+        if (!CheckCoroutine)
+            StartCoroutine("Fade", 3);
     }
 
     public void LoadRuleScene()
     {
         if(!CheckCoroutine)
-            StartCoroutine("Fade",2);  
+            StartCoroutine("Fade",4);  
     }
 
     public void LoadCharacterScene()
     {
         if (!CheckCoroutine)
-            StartCoroutine("Fade", 3);
+            StartCoroutine("Fade", 5);
     }
 
 
@@ -120,12 +151,18 @@ public class GameManager : Singleton<GameManager>
                 SceneManager.LoadScene("MenuScene");
                 break;
             case 1:
-                SceneManager.LoadScene("GameScene");
+                SceneManager.LoadScene("GameScene1");
                 break;
             case 2:
-                SceneManager.LoadScene("RuleScene");
+                SceneManager.LoadScene("GameScene2");
                 break;
             case 3:
+                SceneManager.LoadScene("GameScene3");
+                break;
+            case 4:
+                SceneManager.LoadScene("RuleScene");
+                break;
+            case 5:
                 SceneManager.LoadScene("CharacterScene");
                 break;
         }
