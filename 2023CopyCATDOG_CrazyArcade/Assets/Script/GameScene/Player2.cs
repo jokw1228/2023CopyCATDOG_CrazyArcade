@@ -8,7 +8,7 @@ public class Player2 : Player
     // Start is called before the first frame update
     void Start()
     {
-        Vector2 vector = new Vector2(0, 0);
+
     }
 
     bool UP2_key = false;

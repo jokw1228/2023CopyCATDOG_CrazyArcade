@@ -28,7 +28,7 @@ public class TileInfo
 
     public bool is_empty { get { return state == State.none; } }
 
-    public void UseItem(Player1 player)
+    public void UseItem(Player player)
     {
         Debug.Log(item.GetType());
 
