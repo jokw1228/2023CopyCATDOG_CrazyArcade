@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: sprBackgroundTile
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300000, guid: 31608931a17917c46b1f10849c105165, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d5879570e7a6cc640828cfec934c3862, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1

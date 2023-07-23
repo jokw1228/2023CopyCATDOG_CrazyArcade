@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4089549566358803265}
   - component: {fileID: 1531023256636538227}
-  - component: {fileID: 8158796858799773200}
   - component: {fileID: 8610286900446627429}
   - component: {fileID: 9164271316781290736}
+  - component: {fileID: 1160421027179486725}
   m_Layer: 0
   m_Name: Player2(Uni)
   m_TagString: Untagged
@@ -87,31 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8158796858799773200
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1208607045757790410}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6649725fd0fea0e458a6c4f23adabbe6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waterbomb_prefab: {fileID: 3286163095739512778, guid: 8bce674c8f8a0e5478d867b053acb7e0, type: 3}
-  player_state: 0
-  ballon_range: 1
-  range_item: 0
-  water_bomb_max: 1
-  balloon_item: 0
-  speed_item: 0
-  speed: 5
-  ballon_timer: 0
-  needle: 1
-  ballon_touched: 0
-  pposition: {x: 0, y: 0}
-  pindex: {x: 0, y: 0}
 --- !u!61 &8610286900446627429
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -184,3 +159,29 @@ Rigidbody2D:
   m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &1160421027179486725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1208607045757790410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0cdf65c54b19a14ca1a38251f728363, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waterbomb_prefab: {fileID: 3286163095739512778, guid: 8bce674c8f8a0e5478d867b053acb7e0, type: 3}
+  player_state: 0
+  ballon_range: 1
+  range_item: 0
+  water_bomb_max: 1
+  balloon_item: 0
+  speed_item: 0
+  speed: 5
+  ballon_timer: 0
+  Standby_timer: 0
+  needle: 1
+  ballon_touched: 0
+  pposition: {x: 0, y: 0}
+  pindex: {x: 0, y: 0}
