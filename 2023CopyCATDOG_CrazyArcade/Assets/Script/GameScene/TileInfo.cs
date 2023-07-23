@@ -26,6 +26,8 @@ public class TileInfo
     public IItem get_item { get { return item; } }
     public WaterBomb get_water_bomb { get { return water_bomb; } }
 
+    public bool is_empty { get { return state == State.none; } }
+
     public void UseItem(Player1 player)
     {
         Debug.Log(item.GetType());
