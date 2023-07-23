@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bush : InteractableObject, IItem
+public class Bush : InteractableObject
 {
     void IItem.OnGetItem(Player player)
     {

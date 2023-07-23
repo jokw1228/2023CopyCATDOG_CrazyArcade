@@ -371,11 +371,11 @@ public class Player1 : Player
 
         else if (player_state == State.Standby)
         {
-            ballon_timer += Time.deltaTime;
+            Standby_timer += Time.deltaTime;
             Debug.Log("Stand");
-            if (ballon_timer >= 5)
+            if (Standby_timer >= 1)
             {
-                ballon_timer = 0;
+                Standby_timer = 0;
                 player_state = State.Playing;
             }
         }

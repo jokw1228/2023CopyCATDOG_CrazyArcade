@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
     //º¯¼öµé
     public enum State
     {
-        Playing=0, Imprisoned=1, Destroying=2, Immune=3, Turtle=4, Pirate=5, Standby=6, Endgame=7
+        Standby=0, Imprisoned=1, Destroying=2, Immune=3, Turtle=4, Pirate=5, Playing=6, Endgame=7
     }
 
     public State player_state = State.Standby; //state
@@ -33,11 +33,13 @@ public class Player : MonoBehaviour
     public const float speed_increase = 1;
 
     public float ballon_timer = 0;
+    public float Standby_timer = 0;
+
     public int needle = 1;
 
     public bool ballon_touched =false;
 
-    public float bush_timer = 0;
+    //public float bush_timer = 0;
 
     public Vector2 pposition;
     public Vector2Int pindex;
@@ -143,9 +145,10 @@ public class Player : MonoBehaviour
     }
     public void Bush()
     {
-        Color color = GetComponent<SpriteRenderer>().color;
-        Debug.Log("bush");
-        color.a = 0.0f;
-        GetComponent<SpriteRenderer>().color = color;
+        
+        Debug.Log("bbbbbbbush");
+        Debug.Log(gameObject.name);
+        transform.gameObject.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0f);
+
     }
 }
