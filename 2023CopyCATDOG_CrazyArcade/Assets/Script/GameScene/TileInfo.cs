@@ -26,7 +26,9 @@ public class TileInfo
     public IItem get_item { get { return item; } }
     public WaterBomb get_water_bomb { get { return water_bomb; } }
 
-    public void UseItem(Player player)
+    public bool is_empty { get { return state == State.none; } }
+
+    public void UseItem(Player1 player)
     {
         Debug.Log(item.GetType());
 
@@ -37,17 +39,17 @@ public class TileInfo
         state &= ~State.item;
     }
 
-    //ÇöÀç Å¸ÀÏ Á¤º¸ÀÇ Æ¯Á¤ State¸¦ Ãß°¡
+    //ï¿½ï¿½ï¿½ï¿½ Å¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Æ¯ï¿½ï¿½ Stateï¿½ï¿½ ï¿½ß°ï¿½
     public void AddState(State s)
     {
         this.state |= s;
     }
-    //ÇöÀç Å¸ÀÏ Á¤º¸ÀÇ Æ¯Á¤ State¸¦ Á¦°Å
+    //ï¿½ï¿½ï¿½ï¿½ Å¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Æ¯ï¿½ï¿½ Stateï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     public void DelState(State s)
     {
         this.state &= ~s;
     }
-    //ÇöÀç Å¸ÀÏ Á¤º¸¿¡ Æ¯Á¤ State°¡ ÀÖ´ÂÁö È®ÀÎ
+    //ï¿½ï¿½ï¿½ï¿½ Å¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Æ¯ï¿½ï¿½ Stateï¿½ï¿½ ï¿½Ö´ï¿½ï¿½ï¿½ È®ï¿½ï¿½
     public bool CheckState(State s)
     {
         return (state & s) == s;
