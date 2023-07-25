@@ -148,18 +148,24 @@ public class MapManager : MonoBehaviour
 
 
     #region for_debugging
-    void PrintTileInfos()
+    public void PrintTileInfos()
     {
         String s = new String("");
         for(int i = map_size.y - 1; i >= 0; i--)
         {
             for(int j = 0; j < map_size.x; j++)
             {
-                s += tile_infos[j, i].CheckState(TileInfo.State.wall) + "|";
+                s += tile_infos[j, i].CheckState(TileInfo.State.wall) ? "w" : "0";
+                s += tile_infos[j, i].CheckState(TileInfo.State.box) ? "x" : "0";
+                s += tile_infos[j, i].CheckState(TileInfo.State.water_bomb) ? "b" : "0";
+                s += tile_infos[j, i].CheckState(TileInfo.State.water_ray) ? "r" : "0";
+                s += tile_infos[j, i].CheckState(TileInfo.State.item) ? "i" : "0";
+                s += "|";
             }
             s += "\n";
         }
         Debug.Log(s);
+        //Debug.Break();
     }
     #endregion
 }
