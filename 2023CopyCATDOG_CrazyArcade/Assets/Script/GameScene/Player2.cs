@@ -18,6 +18,8 @@ public class Player2 : Player
 
     private Player1 Opposite;
 
+    private Animator animator;
+
     void Update()
     {
         if (player_state == State.Playing)          //ÇÃ·¹ÀÌ
@@ -132,8 +134,8 @@ public class Player2 : Player
         else if (player_state == State.Destroying)  //»ç¸Á
         {
             Destroy(gameObject);
-            Opposite = GameObject.Find("Player1").GetComponent<Player1>();
-            Opposite.player_state = State.Endgame;
+            GameManager.Inst.GameOver();
+
         }
 
         else if (player_state == State.Immune)      //¹«Àû=>¹°Ç³¼± Å»Ãâ ½Ã »ç¿ë
@@ -321,9 +323,9 @@ public class Player2 : Player
             }
         }
 
-        else if (player_state == State.Endgame)
+        else if (player_state == State.Endgame) //´õ¹ÌµÊ
         {
-
+            GameManager.Inst.GameOver();
         }
 
     }
@@ -334,25 +336,25 @@ public class Player2 : Player
         {
             if (UP2_key)
             {
-
+                //animator.SetBool("UP2", true);
                 Vector2 move = new Vector2(0, 1);
                 transform.Translate(move * Time.deltaTime * speed);
             }
             if (DOWN2_key)
             {
-
+                //animator.SetBool("DOWN2", true);
                 Vector2 move = new Vector2(0, -1);
                 transform.Translate(move * Time.deltaTime * speed);
             }
             if (RIGHT2_key)
             {
-
+                //animator.SetBool("RIGHT2", true);
                 Vector2 move = new Vector2(1, 0);
                 transform.Translate(move * Time.deltaTime * speed);
             }
             if (LEFT2_key)
             {
-
+                //animator.SetBool("LEFT2", true);
                 Vector2 move = new Vector2(-1, 0);
                 transform.Translate(move * Time.deltaTime * speed);
             }
