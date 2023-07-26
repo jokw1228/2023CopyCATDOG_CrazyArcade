@@ -6,6 +6,11 @@ public class Player2 : Player
 {
 
     // Start is called before the first frame update
+    void Start()
+    {
+        Player.player2 = this;
+        animator = GetComponent<Animator>();
+    }
 
     bool UP2_key = false;
     bool DOWN2_key = false;
@@ -16,11 +21,6 @@ public class Player2 : Player
 
     private Animator animator;
 
-    void Start()
-    {
-        Player.player2 = this;
-        animator = GetComponent<Animator>();
-    }
 
     void Update()
     {
@@ -132,13 +132,17 @@ public class Player2 : Player
             }
         }
 
-        
         else if (player_state == State.Destroying)  //»ç¸Á
         {
-
+            GetComponent<SpriteRenderer>().color = Color.white;
+            animator.SetTrigger("DIE1");
             Player.player1.player_state = State.Endgame;
-            GameManager.Inst.GameOver();
-
+            death_timer += Time.deltaTime;
+            if (death_timer >= 1)
+            {
+                GameManager.Inst.GameOver();
+                Destroy(gameObject);
+            }
         }
 
         else if (player_state == State.Immune)      //¹«Àû=>¹°Ç³¼± Å»Ãâ ½Ã »ç¿ë
@@ -339,28 +343,44 @@ public class Player2 : Player
         {
             if (UP2_key)
             {
-                //animator.SetBool("UP2", true);
+                animator.speed = 1;
+                animator.SetTrigger("UP1");
                 Vector2 move = new Vector2(0, 1);
                 transform.Translate(move * Time.deltaTime * speed);
             }
             if (DOWN2_key)
             {
-                //animator.SetBool("DOWN2", true);
+                animator.speed = 1;
+                animator.SetTrigger("DOWN1");
                 Vector2 move = new Vector2(0, -1);
                 transform.Translate(move * Time.deltaTime * speed);
             }
             if (RIGHT2_key)
             {
-                //animator.SetBool("RIGHT2", true);
+                animator.speed = 1;
+                animator.SetTrigger("RIGHT1");
                 Vector2 move = new Vector2(1, 0);
                 transform.Translate(move * Time.deltaTime * speed);
             }
             if (LEFT2_key)
             {
-                //animator.SetBool("LEFT2", true);
+                animator.speed = 1;
+                animator.SetTrigger("LEFT1");
                 Vector2 move = new Vector2(-1, 0);
                 transform.Translate(move * Time.deltaTime * speed);
             }
+            if ((!UP2_key) && (!DOWN2_key) && (!RIGHT2_key) && (!LEFT2_key))
+            {
+                animator.speed = 0;
+            }
+        }
+        else if ((player_state == State.Standby) || (player_state == State.Imprisoned))
+        {
+            animator.speed = 0;
+        }
+        else if ((player_state == State.Destroying))
+        {
+            animator.speed = 1;
         }
     }
 }

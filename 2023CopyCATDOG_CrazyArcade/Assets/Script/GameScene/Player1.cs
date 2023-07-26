@@ -8,7 +8,7 @@ public class Player1 : Player
     // Start is called before the first frame update
     void Start()
     {
-        Player.player1=this;
+        Player.player1 = this;
         animator = GetComponent<Animator>();
     }
 
@@ -20,6 +20,7 @@ public class Player1 : Player
     private Animator animator;
 
     private Player2 Opposite;
+
 
     void Update()
     {

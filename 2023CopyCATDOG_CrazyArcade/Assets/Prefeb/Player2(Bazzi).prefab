@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 7415708549607978442}
   - component: {fileID: 8815346062522707581}
   - component: {fileID: 4009534208367976827}
+  - component: {fileID: 4323131310774186435}
   m_Layer: 0
   m_Name: Player2(Bazzi)
   m_TagString: Untagged
@@ -266,7 +267,29 @@ MonoBehaviour:
   speed: 5
   ballon_timer: 0
   Standby_timer: 0
+  death_timer: 0
   needle: 1
   ballon_touched: 0
   pposition: {x: 0, y: 0}
   pindex: {x: 0, y: 0}
+--- !u!95 &4323131310774186435
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6880785089939925754}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f14f1b937a24ff947a8507b9ebc30929, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
