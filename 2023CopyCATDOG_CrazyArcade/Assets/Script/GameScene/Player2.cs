@@ -6,10 +6,6 @@ public class Player2 : Player
 {
 
     // Start is called before the first frame update
-    void Start()
-    {
-
-    }
 
     bool UP2_key = false;
     bool DOWN2_key = false;
@@ -19,6 +15,11 @@ public class Player2 : Player
     private Player1 Opposite;
 
     private Animator animator;
+
+    void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
 
     void Update()
     {
