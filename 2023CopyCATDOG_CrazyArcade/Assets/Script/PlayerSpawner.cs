@@ -11,8 +11,8 @@ public class PlayerSpawner : MonoBehaviour
         switch (Map)
         {
             case 0:
-                Instantiate(GameManager.Inst.currentPlayer1Character.prefab, new Vector3(-5.5f, -2.5f, 0), Quaternion.identity);
-                Instantiate(GameManager.Inst.currentPlayer2Character.prefab, new Vector3(5.5f, 2.5f, 0), Quaternion.identity);
+                Instantiate(GameManager.Inst.currentPlayer1Character.prefab, new Vector3(-7.5f, 4.5f, 0), Quaternion.identity);
+                Instantiate(GameManager.Inst.currentPlayer2Character.prefab, new Vector3(8.5f, -9.5f, 0), Quaternion.identity);
                 break;
             case 1:
                 Instantiate(GameManager.Inst.currentPlayer1Character.prefab, new Vector3(-5.5f, -2.5f, 0), Quaternion.identity);

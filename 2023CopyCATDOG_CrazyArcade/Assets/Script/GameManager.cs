@@ -22,6 +22,8 @@ public class GameManager : Singleton<GameManager>
     public Character currentPlayer2Character;
     public Map currentMap;
 
+    public AudioSource Bgm;
+    public AudioClip[] BgmList;
     private void Start()
     {
         if (characters1.Length > 0)
@@ -36,6 +38,13 @@ public class GameManager : Singleton<GameManager>
         {
             currentMap = selectmap[0];
         }
+    }
+    public void BgmSoundPlay(AudioClip clip)
+    {
+        Bgm.clip = clip;
+        Bgm.loop = true;
+        Bgm.volume = 0.1f;
+        Bgm.Play();
     }
 
     public void SetPlayer1Character(Character character)
@@ -94,22 +103,26 @@ public class GameManager : Singleton<GameManager>
     
     public void LoadMenuScene()
     {
-        if(!CheckCoroutine)
+        BgmSoundPlay(BgmList[0]);
+        if (!CheckCoroutine)
             StartCoroutine("Fade",0);
     }
 
     public void LoadGameScene1()
     {
-        if(!CheckCoroutine)
+        BgmSoundPlay(BgmList[2]);
+        if (!CheckCoroutine)
             StartCoroutine("Fade",1);
     }
     public void LoadGameScene2()
     {
+        BgmSoundPlay(BgmList[2]);
         if (!CheckCoroutine)
             StartCoroutine("Fade", 2);
     }
     public void LoadGameScene3()
     {
+        BgmSoundPlay(BgmList[2]);
         if (!CheckCoroutine)
             StartCoroutine("Fade", 3);
     }
@@ -122,6 +135,7 @@ public class GameManager : Singleton<GameManager>
 
     public void LoadCharacterScene()
     {
+        BgmSoundPlay(BgmList[1]);
         if (!CheckCoroutine)
             StartCoroutine("Fade", 5);
     }
