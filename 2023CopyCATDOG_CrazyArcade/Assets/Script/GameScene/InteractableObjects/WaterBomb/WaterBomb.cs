@@ -11,10 +11,15 @@ public class WaterBomb : InteractableObject
     public int bomb_range;
     public float water_ray_spread_span;
     public float water_ray_life_span;
+    
+    public WaterRay water_ray_center;
+    public WaterRay water_ray_up;
+    public WaterRay water_ray_right;
+    public WaterRay water_ray_down;
+    public WaterRay water_ray_left;
 
-    public GameObject water_ray_prefab;
-    WaterRay water_ray;
-
+    Dictionary<WaterRay.Direction, WaterRay> water_rays = new();
+    
     Collider2D collider2d;
     SpriteRenderer Sprite_renderer;
 
@@ -43,8 +48,15 @@ public class WaterBomb : InteractableObject
         MapManager.instance.tile_infos[cell_index.x, cell_index.y].AddWaterBomb(this);
         num_of_cur_water_bomb++;
 
-        water_ray = water_ray_prefab.GetComponent<WaterRay>();
-        water_ray.life_span = water_ray_life_span;
+        water_rays.Add(WaterRay.Direction.up, water_ray_up);
+        water_rays.Add(WaterRay.Direction.right, water_ray_right);
+        water_rays.Add(WaterRay.Direction.down, water_ray_down);
+        water_rays.Add(WaterRay.Direction.left, water_ray_left);
+
+        foreach (WaterRay water_ray in water_rays.Values)
+        {
+            water_ray.life_span = water_ray_life_span;
+        }
 
         Invoke("Bomb", bomb_time);
     }
@@ -68,10 +80,11 @@ public class WaterBomb : InteractableObject
         collider2d.enabled = false;
         Sprite_renderer.enabled = false;
         MapManager.instance.GetTileInfo(cell_index).DelWaterBomb();
+        water_ray_center.Gernerate(MapManager.instance.GetCellPosition(cell_index));
 
         WaitForSeconds wait =  new WaitForSeconds(water_ray_spread_span);
 
-        for (int i = 0; i <= bomb_range; i++)
+        for (int i = 1; i <= bomb_range; i++)
         {        
             yield return wait;
 
@@ -110,11 +123,11 @@ public class WaterBomb : InteractableObject
         else if (tile_info.CheckState(TileInfo.State.item))
         {
             tile_info.get_item.Remove();
-            water_ray.Gernerate(MapManager.instance.GetCellPosition(target_cell_index), d);
+            water_rays[d].Gernerate(MapManager.instance.GetCellPosition(target_cell_index));
         }
         else
         {
-            water_ray.Gernerate(MapManager.instance.GetCellPosition(target_cell_index), d);
+            water_rays[d].Gernerate(MapManager.instance.GetCellPosition(target_cell_index));
         }
     }
 

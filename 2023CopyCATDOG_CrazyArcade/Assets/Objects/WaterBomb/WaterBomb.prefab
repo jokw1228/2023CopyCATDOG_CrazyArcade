@@ -147,6 +147,10 @@ MonoBehaviour:
   cell_index: {x: 0, y: 0}
   bomb_time: 3
   bomb_range: 5
-  water_ray_spread_span: 0.01
+  water_ray_spread_span: 0.005
   water_ray_life_span: 1
-  water_ray_prefab: {fileID: 5532615548814369633, guid: d886a906808b1d946ac9d09dcb0991c6, type: 3}
+  water_ray_center: {fileID: 6416442170244525442, guid: 8c4cf2d84cba51b4e9c36817d6733b15, type: 3}
+  water_ray_up: {fileID: 6416442170244525442, guid: 43ed3ca33101359488a8a6a854e9b9cc, type: 3}
+  water_ray_right: {fileID: 6416442170244525442, guid: e96672b6ceba21b4e8744e8ead9ec6f3, type: 3}
+  water_ray_down: {fileID: 6416442170244525442, guid: 25c309ecd17087642ad36a1ca9fe4fbb, type: 3}
+  water_ray_left: {fileID: 6416442170244525442, guid: 1e1ef922f6fda164c927272fca08366b, type: 3}
