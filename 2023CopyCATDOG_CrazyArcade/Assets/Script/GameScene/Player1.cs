@@ -16,6 +16,8 @@ public class Player1 : Player
     bool RIGHT1_key = false;
     bool LEFT1_key = false;
 
+    private Animator animator;
+
     private Player2 Opposite;
 
     void Update()
@@ -70,26 +72,6 @@ public class Player1 : Player
                 LEFT1_key = false;
             }
 
-            if (UP1_key)
-            {
-                Vector2 move = new Vector2(0, 1);
-                transform.Translate(move * Time.deltaTime * speed);
-            }
-            if (DOWN1_key)
-            {
-                Vector2 move = new Vector2(0, -1);
-                transform.Translate(move * Time.deltaTime * speed);
-            }
-            if (RIGHT1_key)
-            {
-                Vector2 move = new Vector2(1, 0);
-                transform.Translate(move * Time.deltaTime * speed);
-            }
-            if (LEFT1_key)
-            {
-                Vector2 move = new Vector2(-1, 0);
-                transform.Translate(move * Time.deltaTime * speed);
-            }
 
             pposition = MapManager.instance.GetClosestCellPosition(transform.position); //player position -> pposition
             cur_tile_info = MapManager.instance.GetClosestTileInfo(transform.position); //current tile information
@@ -148,8 +130,7 @@ public class Player1 : Player
         else if (player_state == State.Destroying)  //»ç¸Á
         {
             Destroy(gameObject);
-            Opposite = GameObject.Find("Player2").GetComponent<Player2>();
-            Opposite.player_state = State.Endgame;
+            GameManager.Inst.GameOver();
         }
 
         else if (player_state == State.Immune)      //¹«Àû=>¹°Ç³¼± Å»Ãâ ½Ã »ç¿ë
@@ -215,27 +196,6 @@ public class Player1 : Player
             else if (Input.GetKeyUp(KeySetting.keys[KeyAction.LEFT1]))
             {
                 LEFT1_key = false;
-            }
-
-            if (UP1_key)
-            {
-                Vector2 move = new Vector2(0, 1);
-                transform.Translate(move * Time.deltaTime * speed);
-            }
-            if (DOWN1_key)
-            {
-                Vector2 move = new Vector2(0, -1);
-                transform.Translate(move * Time.deltaTime * speed);
-            }
-            if (RIGHT1_key)
-            {
-                Vector2 move = new Vector2(1, 0);
-                transform.Translate(move * Time.deltaTime * speed);
-            }
-            if (LEFT1_key)
-            {
-                Vector2 move = new Vector2(-1, 0);
-                transform.Translate(move * Time.deltaTime * speed);
             }
 
             pposition = MapManager.instance.GetClosestCellPosition(transform.position); //player position -> pposition
@@ -320,26 +280,6 @@ public class Player1 : Player
                 LEFT1_key = false;
             }
 
-            if (UP1_key)
-            {
-                Vector2 move = new Vector2(0, 1);
-                transform.Translate(move * Time.deltaTime * speed);
-            }
-            if (DOWN1_key)
-            {
-                Vector2 move = new Vector2(0, -1);
-                transform.Translate(move * Time.deltaTime * speed);
-            }
-            if (RIGHT1_key)
-            {
-                Vector2 move = new Vector2(1, 0);
-                transform.Translate(move * Time.deltaTime * speed);
-            }
-            if (LEFT1_key)
-            {
-                Vector2 move = new Vector2(-1, 0);
-                transform.Translate(move * Time.deltaTime * speed);
-            }
 
             pposition = MapManager.instance.GetClosestCellPosition(transform.position); //player position -> pposition
             cur_tile_info = MapManager.instance.GetClosestTileInfo(transform.position); //current tile information
@@ -380,9 +320,40 @@ public class Player1 : Player
             }
         }
 
-        else if (player_state == State.Endgame)
+        else if (player_state == State.Endgame) //´õ¹ÌµÊ
         {
+            GameManager.Inst.GameOver();
+        }
+    }
 
+    void FixedUpdate()
+    {
+        if ((player_state == State.Playing) || (player_state == State.Turtle) || (player_state == State.Pirate))
+        {
+            if (UP1_key)
+            {
+                //animator.SetBool("UP1", true);
+                Vector2 move = new Vector2(0, 1);
+                transform.Translate(move * Time.deltaTime * speed);
+            }
+            if (DOWN1_key)
+            {
+                //animator.SetBool("DOWN1", true);
+                Vector2 move = new Vector2(0, -1);
+                transform.Translate(move * Time.deltaTime * speed);
+            }
+            if (RIGHT1_key)
+            {
+                //animator.SetBool("RIGHT1", true);
+                Vector2 move = new Vector2(1, 0);
+                transform.Translate(move * Time.deltaTime * speed);
+            }
+            if (LEFT1_key)
+            {
+                //animator.SetBool("LEFT1", true);
+                Vector2 move = new Vector2(-1, 0);
+                transform.Translate(move * Time.deltaTime * speed);
+            }
         }
     }
 }
