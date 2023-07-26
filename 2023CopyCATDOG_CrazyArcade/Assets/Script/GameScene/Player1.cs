@@ -8,6 +8,7 @@ public class Player1 : Player
     // Start is called before the first frame update
     void Start()
     {
+        Player.player1=this;
         animator = GetComponent<Animator>();
     }
 
@@ -129,8 +130,15 @@ public class Player1 : Player
 
         else if (player_state == State.Destroying)  //»ç¸Á
         {
+            GetComponent<SpriteRenderer>().color = Color.white;
             animator.SetTrigger("DIE1");
-            GameManager.Inst.GameOver();
+            Player.player2.player_state = State.Endgame;
+            death_timer += Time.deltaTime;
+            if (death_timer >= 1)
+            {
+                GameManager.Inst.GameOver();
+                Destroy(gameObject);
+            }
         }
 
         else if (player_state == State.Immune)      //¹«Àû=>¹°Ç³¼± Å»Ãâ ½Ã »ç¿ë
@@ -322,7 +330,7 @@ public class Player1 : Player
 
         else if (player_state == State.Endgame) //´õ¹ÌµÊ
         {
-            GameManager.Inst.GameOver();
+
         }
     }
 
@@ -362,6 +370,14 @@ public class Player1 : Player
             {
                 animator.speed = 0;
             }
+        }
+        else if ((player_state == State.Standby) || (player_state == State.Imprisoned))
+        {
+            animator.speed = 0;
+        }
+        else if((player_state == State.Destroying))
+        {
+            animator.speed = 1;
         }
     }
 }

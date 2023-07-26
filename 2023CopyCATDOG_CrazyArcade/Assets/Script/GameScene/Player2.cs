@@ -18,6 +18,7 @@ public class Player2 : Player
 
     void Start()
     {
+        Player.player2 = this;
         animator = GetComponent<Animator>();
     }
 
@@ -134,7 +135,8 @@ public class Player2 : Player
         
         else if (player_state == State.Destroying)  //»ç¸Á
         {
-            Destroy(gameObject);
+
+            Player.player1.player_state = State.Endgame;
             GameManager.Inst.GameOver();
 
         }
@@ -326,7 +328,7 @@ public class Player2 : Player
 
         else if (player_state == State.Endgame) //´õ¹ÌµÊ
         {
-            GameManager.Inst.GameOver();
+
         }
 
     }

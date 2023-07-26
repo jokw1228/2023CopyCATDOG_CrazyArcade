@@ -20,6 +20,9 @@ public class Player : MonoBehaviour
 
     public State player_state = State.Standby; //state
 
+    public static Player player1;
+    public static Player player2;
+
     public int ballon_range = 1;
     public int range_item = 0;
 
@@ -34,6 +37,7 @@ public class Player : MonoBehaviour
 
     public float ballon_timer = 0;
     public float Standby_timer = 0;
+    public float death_timer = 0;
 
     public int needle = 1;
 
