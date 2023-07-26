@@ -150,6 +150,7 @@ public class Player1 : Player
             Destroy(gameObject);
             Opposite = GameObject.Find("Player2").GetComponent<Player2>();
             Opposite.player_state = State.Endgame;
+            //GameManager.GameOver();
         }
 
         else if (player_state == State.Immune)      //¹«Àû=>¹°Ç³¼± Å»Ãâ ½Ã »ç¿ë
@@ -382,7 +383,7 @@ public class Player1 : Player
 
         else if (player_state == State.Endgame)
         {
-
+            //GameManager.GameOver();
         }
     }
 }
