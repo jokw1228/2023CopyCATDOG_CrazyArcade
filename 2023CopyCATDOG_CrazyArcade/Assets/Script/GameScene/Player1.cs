@@ -70,26 +70,6 @@ public class Player1 : Player
                 LEFT1_key = false;
             }
 
-            if (UP1_key)
-            {
-                Vector2 move = new Vector2(0, 1);
-                transform.Translate(move * Time.deltaTime * speed);
-            }
-            if (DOWN1_key)
-            {
-                Vector2 move = new Vector2(0, -1);
-                transform.Translate(move * Time.deltaTime * speed);
-            }
-            if (RIGHT1_key)
-            {
-                Vector2 move = new Vector2(1, 0);
-                transform.Translate(move * Time.deltaTime * speed);
-            }
-            if (LEFT1_key)
-            {
-                Vector2 move = new Vector2(-1, 0);
-                transform.Translate(move * Time.deltaTime * speed);
-            }
 
             pposition = MapManager.instance.GetClosestCellPosition(transform.position); //player position -> pposition
             cur_tile_info = MapManager.instance.GetClosestTileInfo(transform.position); //current tile information
@@ -218,27 +198,6 @@ public class Player1 : Player
                 LEFT1_key = false;
             }
 
-            if (UP1_key)
-            {
-                Vector2 move = new Vector2(0, 1);
-                transform.Translate(move * Time.deltaTime * speed);
-            }
-            if (DOWN1_key)
-            {
-                Vector2 move = new Vector2(0, -1);
-                transform.Translate(move * Time.deltaTime * speed);
-            }
-            if (RIGHT1_key)
-            {
-                Vector2 move = new Vector2(1, 0);
-                transform.Translate(move * Time.deltaTime * speed);
-            }
-            if (LEFT1_key)
-            {
-                Vector2 move = new Vector2(-1, 0);
-                transform.Translate(move * Time.deltaTime * speed);
-            }
-
             pposition = MapManager.instance.GetClosestCellPosition(transform.position); //player position -> pposition
             cur_tile_info = MapManager.instance.GetClosestTileInfo(transform.position); //current tile information
 
@@ -321,26 +280,6 @@ public class Player1 : Player
                 LEFT1_key = false;
             }
 
-            if (UP1_key)
-            {
-                Vector2 move = new Vector2(0, 1);
-                transform.Translate(move * Time.deltaTime * speed);
-            }
-            if (DOWN1_key)
-            {
-                Vector2 move = new Vector2(0, -1);
-                transform.Translate(move * Time.deltaTime * speed);
-            }
-            if (RIGHT1_key)
-            {
-                Vector2 move = new Vector2(1, 0);
-                transform.Translate(move * Time.deltaTime * speed);
-            }
-            if (LEFT1_key)
-            {
-                Vector2 move = new Vector2(-1, 0);
-                transform.Translate(move * Time.deltaTime * speed);
-            }
 
             pposition = MapManager.instance.GetClosestCellPosition(transform.position); //player position -> pposition
             cur_tile_info = MapManager.instance.GetClosestTileInfo(transform.position); //current tile information
@@ -384,6 +323,33 @@ public class Player1 : Player
         else if (player_state == State.Endgame)
         {
             //GameManager.GameOver();
+        }
+    }
+
+    void FixedUpdate()
+    {
+        if ((player_state == State.Playing) || (player_state == State.Turtle) || (player_state == State.Pirate))
+        {
+            if (UP1_key)
+            {
+                Vector2 move = new Vector2(0, 1);
+                transform.Translate(move * Time.deltaTime * speed);
+            }
+            if (DOWN1_key)
+            {
+                Vector2 move = new Vector2(0, -1);
+                transform.Translate(move * Time.deltaTime * speed);
+            }
+            if (RIGHT1_key)
+            {
+                Vector2 move = new Vector2(1, 0);
+                transform.Translate(move * Time.deltaTime * speed);
+            }
+            if (LEFT1_key)
+            {
+                Vector2 move = new Vector2(-1, 0);
+                transform.Translate(move * Time.deltaTime * speed);
+            }
         }
     }
 }

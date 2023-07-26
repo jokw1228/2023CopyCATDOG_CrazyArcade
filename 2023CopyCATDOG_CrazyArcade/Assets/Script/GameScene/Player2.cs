@@ -74,27 +74,6 @@ public class Player2 : Player
                 LEFT2_key = false;
             }
 
-            if (UP2_key)
-            {
-                Vector2 move = new Vector2(0, 1);
-                transform.Translate(move * Time.deltaTime * speed);
-            }
-            if (DOWN2_key)
-            {
-                Vector2 move = new Vector2(0, -1);
-                transform.Translate(move * Time.deltaTime * speed);
-            }
-            if (RIGHT2_key)
-            {
-                Vector2 move = new Vector2(1, 0);
-                transform.Translate(move * Time.deltaTime * speed);
-            }
-            if (LEFT2_key)
-            {
-                Vector2 move = new Vector2(-1, 0);
-                transform.Translate(move * Time.deltaTime * speed);
-            }
-
             pposition = MapManager.instance.GetClosestCellPosition(transform.position); //player position -> pposition
             cur_tile_info = MapManager.instance.GetClosestTileInfo(transform.position); //current tile information
 
@@ -221,27 +200,6 @@ public class Player2 : Player
                 LEFT2_key = false;
             }
 
-            if (UP2_key)
-            {
-                Vector2 move = new Vector2(0, 1);
-                transform.Translate(move * Time.deltaTime * speed);
-            }
-            if (DOWN2_key)
-            {
-                Vector2 move = new Vector2(0, -1);
-                transform.Translate(move * Time.deltaTime * speed);
-            }
-            if (RIGHT2_key)
-            {
-                Vector2 move = new Vector2(1, 0);
-                transform.Translate(move * Time.deltaTime * speed);
-            }
-            if (LEFT2_key)
-            {
-                Vector2 move = new Vector2(-1, 0);
-                transform.Translate(move * Time.deltaTime * speed);
-            }
-
             pposition = MapManager.instance.GetClosestCellPosition(transform.position); //player position -> pposition
             cur_tile_info = MapManager.instance.GetClosestTileInfo(transform.position); //current tile information
 
@@ -324,27 +282,6 @@ public class Player2 : Player
                 LEFT2_key = false;
             }
 
-            if (UP2_key)
-            {
-                Vector2 move = new Vector2(0, 1);
-                transform.Translate(move * Time.deltaTime * speed);
-            }
-            if (DOWN2_key)
-            {
-                Vector2 move = new Vector2(0, -1);
-                transform.Translate(move * Time.deltaTime * speed);
-            }
-            if (RIGHT2_key)
-            {
-                Vector2 move = new Vector2(1, 0);
-                transform.Translate(move * Time.deltaTime * speed);
-            }
-            if (LEFT2_key)
-            {
-                Vector2 move = new Vector2(-1, 0);
-                transform.Translate(move * Time.deltaTime * speed);
-            }
-
             pposition = MapManager.instance.GetClosestCellPosition(transform.position); //player position -> pposition
             cur_tile_info = MapManager.instance.GetClosestTileInfo(transform.position); //current tile information
 
@@ -389,5 +326,36 @@ public class Player2 : Player
 
         }
 
+    }
+
+    void FixedUpdate()
+    {
+        if ((player_state == State.Playing) || (player_state == State.Turtle) || (player_state == State.Pirate))
+        {
+            if (UP2_key)
+            {
+
+                Vector2 move = new Vector2(0, 1);
+                transform.Translate(move * Time.deltaTime * speed);
+            }
+            if (DOWN2_key)
+            {
+
+                Vector2 move = new Vector2(0, -1);
+                transform.Translate(move * Time.deltaTime * speed);
+            }
+            if (RIGHT2_key)
+            {
+
+                Vector2 move = new Vector2(1, 0);
+                transform.Translate(move * Time.deltaTime * speed);
+            }
+            if (LEFT2_key)
+            {
+
+                Vector2 move = new Vector2(-1, 0);
+                transform.Translate(move * Time.deltaTime * speed);
+            }
+        }
     }
 }
