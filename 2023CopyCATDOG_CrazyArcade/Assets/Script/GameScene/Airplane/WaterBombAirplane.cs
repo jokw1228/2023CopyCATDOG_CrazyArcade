@@ -12,6 +12,6 @@ public class WaterBombAirplane : Airplane
     }
     override protected void Drop()
     {
-        water_bomb_generator.Generate(MapManager.instance.GetClosestCellPosition(transform.position), 100);
+        water_bomb_generator.Generate(MapManager.instance.GetClosestCellPosition(transform.position), UnityEngine.Random.Range(0,100));
     }
 }

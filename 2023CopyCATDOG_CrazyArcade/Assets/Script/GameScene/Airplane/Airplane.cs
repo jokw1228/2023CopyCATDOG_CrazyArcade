@@ -32,7 +32,7 @@ abstract public class Airplane : MonoBehaviour
         }
         else
         {
-            transform.rotation = Quaternion.Euler(0, 180, 0);
+            transform.rotation = Quaternion.Euler(0, 180f, 0);
             if (transform.position.x < dest_x)
             {
                 transform.position += direction * Time.deltaTime * speed;
