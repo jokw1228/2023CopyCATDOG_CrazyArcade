@@ -21,6 +21,8 @@ public class Player1 : Player
 
     private Player2 Opposite;
 
+    public GameObject turtle;
+    public GameObject pirate_turtle;
 
     void Update()
     {
@@ -159,6 +161,8 @@ public class Player1 : Player
 
             GetComponent<SpriteRenderer>().color = Color.green;
 
+            this.turtle.SetActive(true);
+
             if (Input.GetKeyDown(KeySetting.keys[KeyAction.UP1]))       //UP1
             {
                 UP1_key = true;
@@ -228,6 +232,7 @@ public class Player1 : Player
             {
                 player_state = State.Immune;
                 Debug.Log("Hit");
+                this.turtle.SetActive(false);
             }
             if (cur_tile_info.CheckState(TileInfo.State.item))
             {
@@ -240,6 +245,8 @@ public class Player1 : Player
             speed = basic_speed + speed_item * speed_increase;
 
             GetComponent<SpriteRenderer>().color = Color.red;
+
+            this.pirate_turtle.SetActive(true);
 
             if (Input.GetKeyDown(KeySetting.keys[KeyAction.UP1]))       //UP1
             {
@@ -311,6 +318,7 @@ public class Player1 : Player
             {
                 player_state = State.Immune;
                 Debug.Log("Hit");
+                this.pirate_turtle.SetActive(false);
             }
             if (cur_tile_info.CheckState(TileInfo.State.item))
             {

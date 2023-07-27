@@ -21,6 +21,8 @@ public class Player2 : Player
 
     private Animator animator;
 
+    public GameObject turtle;
+    public GameObject pirate_turtle;
 
     void Update()
     {
@@ -161,6 +163,8 @@ public class Player2 : Player
 
             GetComponent<SpriteRenderer>().color = Color.green;
 
+            this.turtle.SetActive(true);
+
             if (Input.GetKeyDown(KeySetting.keys[KeyAction.UP2]))       //UP2
             {
                 UP2_key = true;
@@ -230,6 +234,7 @@ public class Player2 : Player
             {
                 player_state = State.Immune;
                 Debug.Log("Hit");
+                this.turtle.SetActive(false);
             }
             if (cur_tile_info.CheckState(TileInfo.State.item))
             {
@@ -243,6 +248,8 @@ public class Player2 : Player
 
             GetComponent<SpriteRenderer>().color = Color.red;
 
+            this.pirate_turtle.SetActive(true);
+
             if (Input.GetKeyDown(KeySetting.keys[KeyAction.UP2]))       //UP2
             {
                 UP2_key = true;
@@ -312,6 +319,7 @@ public class Player2 : Player
             {
                 player_state = State.Immune;
                 Debug.Log("Hit");
+                this.pirate_turtle.SetActive(false);
             }
             if (cur_tile_info.CheckState(TileInfo.State.item))
             {
