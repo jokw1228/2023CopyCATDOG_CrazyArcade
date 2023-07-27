@@ -1342,13 +1342,13 @@ MonoBehaviour:
   selectmap:
   - a: 0
     name: Village1
-    Icon: {fileID: 21300000, guid: 28344e567392f324aabe1457c14bd178, type: 3}
+    Icon: {fileID: 21300000, guid: c754c2e86aa5da84e9aaff37ba7f059c, type: 3}
   - a: 1
     name: Village2
-    Icon: {fileID: 21300000, guid: 46ccbf4334890f847be82d7470bf4883, type: 3}
+    Icon: {fileID: 21300000, guid: a7c267dd075dd4a47901394b1187aeac, type: 3}
   - a: 2
     name: Village3
-    Icon: {fileID: 21300000, guid: 6f77a6798b337a74dad90ee0ffc27c36, type: 3}
+    Icon: {fileID: 21300000, guid: ace18ab9c8760824798eae2d04f269f5, type: 3}
   currentPlayer1Character:
     prefab: {fileID: 0}
     name: 
