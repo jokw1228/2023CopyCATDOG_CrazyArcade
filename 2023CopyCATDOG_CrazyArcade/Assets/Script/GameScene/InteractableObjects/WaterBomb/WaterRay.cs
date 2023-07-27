@@ -5,12 +5,6 @@ using UnityEngine;
 
 public class WaterRay : InteractableObject
 {
-    public enum Direction
-    {
-         up = 0, right = 1, down = 2, left = 3
-    }
-
-
     public double life_span;
     double timer = 0.0;
 

@@ -8,7 +8,10 @@ public class MapManager : MonoBehaviour
 {
     //싱글톤 인스턴스 -> 메모리 효율을 위해 씬 전환시 del instance 해줘야할 듯?
     public static MapManager instance;
-
+    public enum Direction
+    {
+        up = 0, right = 1, down = 2, left = 3
+    }
 
     [HideInInspector] public float tile_size;
     Vector2Int map_size;
@@ -21,9 +24,20 @@ public class MapManager : MonoBehaviour
 
     //현재 타일 정보를 담는 2차원 배열, 해당 타일에 물줄기, 아이템 등이 있는지 저장하는 역할을 함
     public TileInfo[,] tile_infos;
+    public bool CheckTileInfo(Vector2Int cell_index)
+    {
+        if (cell_index.x < 0 || cell_index.x >= map_size.x || cell_index.y < 0 || cell_index.y >= map_size.y)
+            return false;
+        else
+            return true;
+    }
     public Vector3 GetCellPosition(Vector2Int cell_index)
     {
         return new Vector3(bottom_left_tile_pos.x + tile_size * cell_index.x, bottom_left_tile_pos.y + tile_size * cell_index.y, 0);
+    }
+    public Vector3 GetCellPosition(float cell_index_x, float cell_index_y)
+    {
+        return new Vector3(bottom_left_tile_pos.x + tile_size * cell_index_x, bottom_left_tile_pos.y + tile_size * cell_index_y, 0);
     }
     public TileInfo GetTileInfo(Vector2Int index)
     {

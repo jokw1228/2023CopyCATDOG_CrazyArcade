@@ -6,8 +6,9 @@ public class Player2 : Player
 {
 
     // Start is called before the first frame update
-    void Start()
+    override protected void Start()
     {
+        base.Start();
         Player.player2 = this;
         animator = GetComponent<Animator>();
     }
@@ -22,8 +23,10 @@ public class Player2 : Player
     private Animator animator;
 
 
-    void Update()
+    override protected void Update()
     {
+        base.Update();
+
         if (player_state == State.Playing)          //플레이
         {
             speed = basic_speed + speed_item * speed_increase;
@@ -86,8 +89,8 @@ public class Player2 : Player
 
                 if (WaterBomb.num_of_cur_water_bomb < water_bomb_max + balloon_item)
                 {
-                    //목표 위치에 오브젝트(벽, 상자, 물폭탄, 물줄기, 아이템 등)가 없을 경우에만 물폭탄 설치, 해당 조건 확인 필요
-                    if (MapManager.instance.GetClosestTileInfo(pposition).CheckState(TileInfo.State.none))
+                    //목표 위치에 벽, 상자, 물폭탄이 없을 경우에만 물폭탄 설치
+                    if (!MapManager.instance.GetClosestTileInfo(pposition).CheckState((TileInfo.State)((int)TileInfo.State.wall + (int)TileInfo.State.box + (int)TileInfo.State.water_bomb)))
                         GenerateWaterBomb(pposition, ballon_range + range_item);//물풍선 오브젝트 생성<-ppostion+object 생성 명령어
                 }
                 else

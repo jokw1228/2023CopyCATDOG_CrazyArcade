@@ -18,17 +18,17 @@ public class WaterBomb : InteractableObject
     public WaterRay water_ray_down;
     public WaterRay water_ray_left;
 
-    Dictionary<WaterRay.Direction, WaterRay> water_rays = new();
+    Dictionary<MapManager.Direction, WaterRay> water_rays = new();
     
     Collider2D collider2d;
     SpriteRenderer Sprite_renderer;
 
-    Dictionary<WaterRay.Direction, bool> isDirectionBlocked = new Dictionary<WaterRay.Direction, bool>()
+    Dictionary<MapManager.Direction, bool> isDirectionBlocked = new Dictionary<MapManager.Direction, bool>()
     {
-        { WaterRay.Direction.up, false },
-        { WaterRay.Direction.right, false },
-        { WaterRay.Direction.down, false },
-        { WaterRay.Direction.left, false },
+        { MapManager.Direction.up, false },
+        { MapManager.Direction.right, false },
+        { MapManager.Direction.down, false },
+        { MapManager.Direction.left, false },
     };
 
     bool is_bombed = false;
@@ -48,10 +48,10 @@ public class WaterBomb : InteractableObject
         MapManager.instance.tile_infos[cell_index.x, cell_index.y].AddWaterBomb(this);
         num_of_cur_water_bomb++;
 
-        water_rays.Add(WaterRay.Direction.up, water_ray_up);
-        water_rays.Add(WaterRay.Direction.right, water_ray_right);
-        water_rays.Add(WaterRay.Direction.down, water_ray_down);
-        water_rays.Add(WaterRay.Direction.left, water_ray_left);
+        water_rays.Add(MapManager.Direction.up, water_ray_up);
+        water_rays.Add(MapManager.Direction.right, water_ray_right);
+        water_rays.Add(MapManager.Direction.down, water_ray_down);
+        water_rays.Add(MapManager.Direction.left, water_ray_left);
 
         foreach (WaterRay water_ray in water_rays.Values)
         {
@@ -88,17 +88,17 @@ public class WaterBomb : InteractableObject
         {        
             yield return wait;
 
-            GenerateWaterRay(cell_index + Vector2Int.up * i, WaterRay.Direction.up);
-            GenerateWaterRay(cell_index + Vector2Int.right * i, WaterRay.Direction.right);
-            GenerateWaterRay(cell_index + Vector2Int.down * i, WaterRay.Direction.down);
-            GenerateWaterRay(cell_index + Vector2Int.left * i, WaterRay.Direction.left);
+            GenerateWaterRay(cell_index + Vector2Int.up * i, MapManager.Direction.up);
+            GenerateWaterRay(cell_index + Vector2Int.right * i, MapManager.Direction.right);
+            GenerateWaterRay(cell_index + Vector2Int.down * i, MapManager.Direction.down);
+            GenerateWaterRay(cell_index + Vector2Int.left * i, MapManager.Direction.left);
         }
 
         num_of_cur_water_bomb--;
         Destroy(gameObject);
         yield break;
     }
-    void GenerateWaterRay(Vector2Int target_cell_index, WaterRay.Direction d)
+    void GenerateWaterRay(Vector2Int target_cell_index, MapManager.Direction d)
     {
         if (isDirectionBlocked[d])
         {

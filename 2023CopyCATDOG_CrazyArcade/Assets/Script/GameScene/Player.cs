@@ -49,6 +49,22 @@ public class Player : MonoBehaviour
     public Vector2Int pindex;
     public TileInfo cur_tile_info = null;
 
+    Vector2Int cell_index;
+    protected virtual void Start()
+    {
+        cell_index = MapManager.instance.GetClosestCellIndex(transform.position);
+        MapManager.instance.GetTileInfo(cell_index).AddState(TileInfo.State.player);
+    }
+    protected virtual void Update()
+    {
+        if(cell_index != MapManager.instance.GetClosestCellIndex(transform.position))
+        {
+            MapManager.instance.GetTileInfo(cell_index).DelState(TileInfo.State.player);
+            cell_index = MapManager.instance.GetClosestCellIndex(transform.position);
+            MapManager.instance.GetTileInfo(cell_index).AddState(TileInfo.State.player);
+        }
+    }
+
     // Update is called once per frame
     /*void FixedUpdate()
     {
