@@ -13,7 +13,7 @@ public class ItemGenerator : MonoBehaviour
 {
     [SerializeField] List<ItemPrefabPair> item_prefabs;
     Dictionary<Item, GameObject> item_prefab_dict = new Dictionary<Item, GameObject>();
-    Dictionary<Item, int> item_stock = new Dictionary<Item, int>();
+    static Dictionary<Item, int> item_stock = new Dictionary<Item, int>();
 
     [Space]
     public GameObject airplane_prefab;
@@ -24,14 +24,6 @@ public class ItemGenerator : MonoBehaviour
     {
         get
         {
-            Dictionary<Item, int> item_stock = new Dictionary<Item, int>()
-            {
-                {Item.bubble, 10},
-                {Item.roller, 10},
-                {Item.fluid, 10},
-                {Item.none, 10}
-            };
-
             int stock_sum = 0;
 
             foreach (int s in item_stock.Values)
