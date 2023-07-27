@@ -48,6 +48,7 @@ public class ItemGenerator : MonoBehaviour
     }
     private void Awake()
     {
+        item_stock = new Dictionary<Item, int>();
         foreach (ItemPrefabPair pair in item_prefabs) {
             item_prefab_dict.Add(pair.item, pair.prefab);
             item_stock.Add(pair.item, pair.stock);

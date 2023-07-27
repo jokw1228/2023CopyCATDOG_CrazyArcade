@@ -11,6 +11,7 @@ public class Player2 : Player
         base.Start();
         Player.player2 = this;
         animator = GetComponent<Animator>();
+        collider2d = GetComponent<Collider2D>();
     }
 
     bool UP2_key = false;
@@ -22,6 +23,7 @@ public class Player2 : Player
 
     private Animator animator;
 
+    Collider2D collider2d;
 
     override protected void Update()
     {
@@ -115,7 +117,10 @@ public class Player2 : Player
 
             ballon_timer += Time.deltaTime;
 
-            GetComponent<SpriteRenderer>().color = Color.blue;
+            //GetComponent<SpriteRenderer>().color = Color.blue;
+            animator.SetBool("IsImprisoned", true);
+
+            collider2d.isTrigger = true;
 
             if ((Input.GetKeyDown(KeySetting.keys[KeyAction.ITEM2])) && needle >= 1) // case1: µz√‚
             {
@@ -138,6 +143,7 @@ public class Player2 : Player
         else if (player_state == State.Destroying)  //ªÁ∏¡
         {
             GetComponent<SpriteRenderer>().color = Color.white;
+            animator.SetBool("IsImprisoned", false);
             animator.SetTrigger("DIE1");
             Player.player1.player_state = State.Endgame;
             death_timer += Time.deltaTime;
@@ -150,6 +156,9 @@ public class Player2 : Player
 
         else if (player_state == State.Immune)      //π´¿˚=>π∞«≥º± ≈ª√‚ Ω√ ªÁøÎ
         {
+            collider2d.isTrigger = false;
+            animator.SetBool("IsImprisoned", false);
+
             ballon_timer += Time.deltaTime;
 
             if (ballon_timer >= 1)
@@ -385,5 +394,12 @@ public class Player2 : Player
         {
             animator.speed = 1;
         }
+    }
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+            if (Vector3.Distance(other.transform.position, transform.position) < 0.5f)
+                if(player_state == State.Imprisoned)
+                    player_state = State.Destroying;
     }
 }

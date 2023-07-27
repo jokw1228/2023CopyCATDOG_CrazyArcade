@@ -39,7 +39,7 @@ public class Player : MonoBehaviour
     public float Standby_timer = 0;
     public float death_timer = 0;
 
-    public int needle = 1;
+    public int needle = 1;//enum ActiveItem { none, needle, wind, raser}
 
     public bool ballon_touched =false;
 
