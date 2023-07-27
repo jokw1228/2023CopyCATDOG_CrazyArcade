@@ -338,7 +338,7 @@ public class Player2 : Player
             }
         }
 
-        else if (player_state == State.Endgame) //´õ¹ÌµÊ
+        else if (player_state == State.Endgame) 
         {
 
         }
