@@ -118,6 +118,8 @@ MonoBehaviour:
   ballon_touched: 0
   pposition: {x: 0, y: 0}
   pindex: {x: 0, y: 0}
+  turtle: {fileID: 8948073205639481766}
+  pirate_turtle: {fileID: 8001192861622434645}
 --- !u!61 &8610286900446627429
 BoxCollider2D:
   m_ObjectHideFlags: 0

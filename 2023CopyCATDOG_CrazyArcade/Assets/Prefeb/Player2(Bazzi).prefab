@@ -358,6 +358,8 @@ MonoBehaviour:
   ballon_touched: 0
   pposition: {x: 0, y: 0}
   pindex: {x: 0, y: 0}
+  turtle: {fileID: 987944187973165157}
+  pirate_turtle: {fileID: 8895293558046767057}
 --- !u!95 &4323131310774186435
 Animator:
   serializedVersion: 5

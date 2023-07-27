@@ -24,6 +24,8 @@ public class Player1 : Player
     public GameObject turtle;
     public GameObject pirate_turtle;
 
+
+
     void Update()
     {
         if (player_state == State.Playing)          //«√∑π¿Ã
