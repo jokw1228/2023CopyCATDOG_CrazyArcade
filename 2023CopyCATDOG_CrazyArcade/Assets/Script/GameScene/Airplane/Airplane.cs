@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class Airplane : MonoBehaviour
+abstract public class Airplane : MonoBehaviour
 {
     float dest_x;
     Vector3 direction;
-    int item_cnt;
+    int drop_cnt;
     bool is_from_right;
 
     public float speed;
@@ -19,11 +19,10 @@ public class Airplane : MonoBehaviour
             if (transform.position.x > dest_x)
             {
                 transform.position += direction * Time.deltaTime * speed;
-                if (item_cnt > 0 && transform.position.x < 0 && MapManager.instance.GetClosestTileInfo(transform.position).is_empty)
+                if (drop_cnt > 0 && transform.position.x < 0 && MapManager.instance.GetClosestTileInfo(transform.position).is_empty)
                 {
-
-                    MapManager.instance.item_generator.GenerateItem(ItemGenerator.random_item, MapManager.instance.GetClosestCellIndex(transform.position));
-                    item_cnt--;
+                    Drop();
+                    drop_cnt--;
                 }
             }
             else
@@ -33,13 +32,14 @@ public class Airplane : MonoBehaviour
         }
         else
         {
+            transform.rotation = Quaternion.Euler(0, 180, 0);
             if (transform.position.x < dest_x)
             {
                 transform.position += direction * Time.deltaTime * speed;
-                if (item_cnt > 0 && transform.position.x > 0 && MapManager.instance.GetClosestTileInfo(transform.position).is_empty)
+                if (drop_cnt > 0 && transform.position.x > 0 && MapManager.instance.GetClosestTileInfo(transform.position).is_empty)
                 {
-                    MapManager.instance.item_generator.GenerateItem(ItemGenerator.random_item, MapManager.instance.GetClosestCellIndex(transform.position));
-                    item_cnt--;
+                    Drop();
+                    drop_cnt--;
                 }
             }
             else
@@ -48,9 +48,9 @@ public class Airplane : MonoBehaviour
             }
         }
     }
-    public void SetAirplane(bool is_from_right, int item_count)
+    public void SetAirplane(bool is_from_right, int drop_count)
     {
-        this.item_cnt = item_count;
+        this.drop_cnt = drop_count;
         this.is_from_right = is_from_right;
 
         if (is_from_right)
@@ -64,4 +64,5 @@ public class Airplane : MonoBehaviour
             direction = Vector3.right;
         }
     }
+    abstract protected void Drop();
 }
