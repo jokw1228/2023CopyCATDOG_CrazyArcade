@@ -12,6 +12,38 @@ public class MapManager : MonoBehaviour
     {
         up = 0, right = 1, down = 2, left = 3
     }
+    public static Vector2Int GetVector2Int(Direction direction)
+    {
+        switch (direction)
+        {
+            case Direction.up:
+                return Vector2Int.up;
+            case Direction.right:
+                return Vector2Int.right;
+            case Direction.down:
+                return Vector2Int.down;
+            case Direction.left:
+                return Vector2Int.left;
+            default:
+                return Vector2Int.zero;
+        }
+    }
+    public static Vector2 GetVector2(Direction direction)
+    {
+        switch (direction)
+        {
+            case Direction.up:
+                return Vector2.up;
+            case Direction.right:
+                return Vector2.right;
+            case Direction.down:
+                return Vector2.down;
+            case Direction.left:
+                return Vector2.left;
+            default:
+                return Vector2.zero;
+        }
+    }
 
     [HideInInspector] public float tile_size;
     Vector2Int map_size;

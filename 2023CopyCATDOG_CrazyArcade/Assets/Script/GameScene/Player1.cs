@@ -125,6 +125,10 @@ public class Player1 : Player
                     case ActiveItem.laser:
 
                         break;
+                    case ActiveItem.dash:
+                        Dash(direction);
+                        active_item_slot = ActiveItem.none;
+                        break;
                 }
 
             }
@@ -279,6 +283,24 @@ public class Player1 : Player
                 }
             }
 
+            if (Input.GetKeyDown(KeySetting.keys[KeyAction.ITEM1]))
+            {
+                switch (active_item_slot)
+                {
+                    case ActiveItem.wind:
+                        GenerateWind(direction);
+                        active_item_slot = ActiveItem.none;
+                        break;
+                    case ActiveItem.laser:
+
+                        break;
+                    case ActiveItem.dash:
+                        Dash(direction);
+                        active_item_slot = ActiveItem.none;
+                        break;
+                }
+
+            }
             if (cur_tile_info.CheckState(TileInfo.State.water_ray))
             {
                 player_state = State.Immune;
@@ -370,6 +392,24 @@ public class Player1 : Player
                 }
             }
 
+            if (Input.GetKeyDown(KeySetting.keys[KeyAction.ITEM1]))
+            {
+                switch (active_item_slot)
+                {
+                    case ActiveItem.wind:
+                        GenerateWind(direction);
+                        active_item_slot = ActiveItem.none;
+                        break;
+                    case ActiveItem.laser:
+
+                        break;
+                    case ActiveItem.dash:
+                        Dash(direction);
+                        active_item_slot = ActiveItem.none;
+                        break;
+                }
+
+            }
             if (cur_tile_info.CheckState(TileInfo.State.water_ray))
             {
                 player_state = State.Immune;

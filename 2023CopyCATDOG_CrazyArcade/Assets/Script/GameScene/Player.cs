@@ -7,22 +7,28 @@ public class Player : MonoBehaviour
 {
     protected MapManager.Direction direction = MapManager.Direction.down;
     public GameObject waterbomb_prefab;                                 //물풍선 프리팹
-    public void GenerateWaterBomb(Vector2 position, int bomb_range)     //물풍선 생성 함수
+    protected void GenerateWaterBomb(Vector2 position, int bomb_range)     //물풍선 생성 함수
     {
         GameObject bomb = Instantiate<GameObject>(waterbomb_prefab, position, Quaternion.identity);
         bomb.GetComponent<WaterBomb>().bomb_range = bomb_range;
     }
     public GameObject wind;
-    public void GenerateWind(MapManager.Direction direction)
+    protected void GenerateWind(MapManager.Direction direction)
     {
+        Debug.Log("use wind");
         GameObject wind_instance;
         wind_instance = Instantiate<GameObject>(wind, MapManager.instance.GetCellPosition(cell_index), Quaternion.identity);
         wind_instance.GetComponent<Wind>().direction = direction;
     }
-    public GameObject Raser;
-    public void GenerateRaser(Vector2 position, MapManager.Direction direction)
+    public GameObject Laser;
+    protected  void GenerateLaser(Vector2 position, MapManager.Direction direction)
     {
 
+    }
+    protected void Dash(MapManager.Direction direction)
+    {
+        Debug.Log("use dash");
+        //GetComponent<Rigidbody2D>().MovePosition((Vector2)transform.position + MapManager.GetVector2(direction) * 2);
     }
     //변수들
     public enum State
@@ -51,7 +57,7 @@ public class Player : MonoBehaviour
     public float Standby_timer = 0;
     public float death_timer = 0;
 
-    protected enum ActiveItem { none, needle, wind, laser}
+    protected enum ActiveItem { none, needle, wind, laser ,dash}
     protected ActiveItem active_item_slot = ActiveItem.none;
 
     public bool ballon_touched =false;
@@ -109,5 +115,9 @@ public class Player : MonoBehaviour
     public void GainrLaser()
     {
         active_item_slot = ActiveItem.laser;
+    }
+    public void GainDash()
+    {
+        active_item_slot = ActiveItem.dash;
     }
 }
