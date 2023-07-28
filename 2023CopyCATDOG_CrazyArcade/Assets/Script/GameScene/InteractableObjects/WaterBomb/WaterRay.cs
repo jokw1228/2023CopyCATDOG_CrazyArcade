@@ -10,16 +10,6 @@ public class WaterRay : InteractableObject
          up = 0, right = 1, down = 2, left = 3
     }
 
-    public AudioSource sound;
-    public AudioClip[] audiolists;
-
-    public void SoundPlay(AudioClip clip)
-    {
-        sound.clip = clip;
-        sound.loop = false;
-        sound.volume = 0.5f;
-        sound.Play();
-    }
 
     public double life_span;
     double timer = 0.0;
@@ -28,8 +18,6 @@ public class WaterRay : InteractableObject
     {
         cell_index = MapManager.instance.GetClosestCellIndex(new Vector2(transform.position.x, transform.position.y));
         state = TileInfo.State.water_ray;
-
-        SoundPlay(audiolists[0]);
 
         MapManager.instance.GetTileInfo(cell_index).AddState(state);
     }

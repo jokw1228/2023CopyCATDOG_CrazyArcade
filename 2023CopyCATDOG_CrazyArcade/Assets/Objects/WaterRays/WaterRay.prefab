@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6798917838850390003}
   - component: {fileID: 2460938104318336512}
-  - component: {fileID: 5845394447924306525}
   m_Layer: 0
   m_Name: WaterRay
   m_TagString: Untagged
@@ -85,19 +84,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5845394447924306525
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5532615548814369633}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b61e550d7d05e541b50bf28f87bb395, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  state: 0
-  cell_index: {x: 0, y: 0}
-  sprite: {fileID: 21300000, guid: 80383cf56921d3a49b6d1515bc68df09, type: 3}
-  life_span: 1
