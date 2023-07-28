@@ -9,11 +9,12 @@ public class TileInfo
     public enum State
     {
         none = 0b0000_0000,
-        wall = 0b0000_0001,
-        box = 0b0000_0010,
-        water_bomb = 0b0000_0100,
-        water_ray = 0b0000_1000,
-        item = 0b0001_0000
+        player = 0b0000_0001,
+        wall = 0b0000_0010,
+        box = 0b0000_0100,
+        water_bomb = 0b0000_1000,
+        water_ray = 0b0001_0000,
+        item = 0b0010_0000
     }
 
     State state = State.none;
@@ -52,7 +53,7 @@ public class TileInfo
     //���� Ÿ�� ������ Ư�� State�� �ִ��� Ȯ��
     public bool CheckState(State s)
     {
-        return (state & s) == s;
+        return (state & s) != State.none;
     }
     public void AddBox(Box box)
     {

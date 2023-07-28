@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4715746736826451308}
   - component: {fileID: 5824410841155329792}
-  - component: {fileID: 4128575033332942929}
+  - component: {fileID: 9023780220532284306}
   m_Layer: 0
-  m_Name: Airplane
+  m_Name: ItemAirplane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4128575033332942929
+--- !u!114 &9023780220532284306
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -94,7 +94,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3869888368737847641}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28064c1f312c9504a937b340d30849e3, type: 3}
+  m_Script: {fileID: 11500000, guid: 87cf9ea99d5b9784998083afb45356d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2

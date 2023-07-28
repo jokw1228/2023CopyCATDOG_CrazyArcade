@@ -39,7 +39,7 @@ public class Player : MonoBehaviour
     public float Standby_timer = 0;
     public float death_timer = 0;
 
-    public int needle = 1;
+    public int needle = 1;//enum ActiveItem { none, needle, wind, raser}
 
     public bool ballon_touched =false;
 
@@ -48,6 +48,22 @@ public class Player : MonoBehaviour
     public Vector2 pposition;
     public Vector2Int pindex;
     public TileInfo cur_tile_info = null;
+
+    Vector2Int cell_index;
+    protected virtual void Start()
+    {
+        cell_index = MapManager.instance.GetClosestCellIndex(transform.position);
+        MapManager.instance.GetTileInfo(cell_index).AddState(TileInfo.State.player);
+    }
+    protected virtual void Update()
+    {
+        if(cell_index != MapManager.instance.GetClosestCellIndex(transform.position))
+        {
+            MapManager.instance.GetTileInfo(cell_index).DelState(TileInfo.State.player);
+            cell_index = MapManager.instance.GetClosestCellIndex(transform.position);
+            MapManager.instance.GetTileInfo(cell_index).AddState(TileInfo.State.player);
+        }
+    }
 
     // Update is called once per frame
     /*void FixedUpdate()
@@ -146,13 +162,5 @@ public class Player : MonoBehaviour
     public void Pirate()
     {
         player_state = State.Pirate;
-    }
-    public void Bush()
-    {
-        
-        Debug.Log("bbbbbbbush");
-        Debug.Log(gameObject.name);
-        transform.gameObject.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0f);
-
     }
 }

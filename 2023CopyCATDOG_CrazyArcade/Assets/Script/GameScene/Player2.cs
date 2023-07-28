@@ -6,10 +6,12 @@ public class Player2 : Player
 {
 
     // Start is called before the first frame update
-    void Start()
+    override protected void Start()
     {
+        base.Start();
         Player.player2 = this;
         animator = GetComponent<Animator>();
+        collider2d = GetComponent<Collider2D>();
     }
 
     bool UP2_key = false;
@@ -21,6 +23,7 @@ public class Player2 : Player
 
     private Animator animator;
 
+    Collider2D collider2d;
     public GameObject turtle;
     public GameObject pirate_turtle;
 
@@ -35,9 +38,11 @@ public class Player2 : Player
         sound.Play();
     }
 
-    void Update()
+    override protected void Update()
     {
-        if (player_state == State.Playing)          //ÇÃ·¹ÀÌ
+        base.Update();
+
+        if (player_state == State.Playing)          //ï¿½Ã·ï¿½ï¿½ï¿½
         {
             speed = basic_speed + speed_item * speed_increase;
 
@@ -94,21 +99,21 @@ public class Player2 : Player
             pposition = MapManager.instance.GetClosestCellPosition(transform.position); //player position -> pposition
             cur_tile_info = MapManager.instance.GetClosestTileInfo(transform.position); //current tile information
 
-            if (Input.GetKeyDown(KeySetting.keys[KeyAction.BALL2]))                     // ¹°Ç³¼± Å° ÀÔ·Â
+            if (Input.GetKeyDown(KeySetting.keys[KeyAction.BALL2]))                     // ï¿½ï¿½Ç³ï¿½ï¿½ Å° ï¿½Ô·ï¿½
             {
 
                 if (WaterBomb.num_of_cur_water_bomb < water_bomb_max + balloon_item)
                 {
-                    //¸ñÇ¥ À§Ä¡¿¡ ¿ÀºêÁ§Æ®(º®, »óÀÚ, ¹°ÆøÅº, ¹°ÁÙ±â, ¾ÆÀÌÅÛ µî)°¡ ¾øÀ» °æ¿ì¿¡¸¸ ¹°ÆøÅº ¼³Ä¡, ÇØ´ç Á¶°Ç È®ÀÎ ÇÊ¿ä
-                    if (MapManager.instance.GetClosestTileInfo(pposition).CheckState(TileInfo.State.none))
+                    //ï¿½ï¿½Ç¥ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½Åºï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ì¿¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Åº ï¿½ï¿½Ä¡
+                    if (!MapManager.instance.GetClosestTileInfo(pposition).CheckState((TileInfo.State)((int)TileInfo.State.wall + (int)TileInfo.State.box + (int)TileInfo.State.water_bomb)))
                     {
-                        GenerateWaterBomb(pposition, ballon_range + range_item);//¹°Ç³¼± ¿ÀºêÁ§Æ® »ý¼º<-ppostion+object »ý¼º ¸í·É¾î
+                        GenerateWaterBomb(pposition, ballon_range + range_item);//ï¿½ï¿½Ç³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½<-ppostion+object ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½É¾ï¿½
                         SoundPlay(audiolists[1]);
                     }
                 }
                 else
                 {
-                    //¹°ÆøÅºÀÌ ÇÊµå¿¡ ÃÖ´ë °¹¼ö¸¸Å­ ¼³Ä¡µÇ¾î ÀÖÀ» °æ¿ìÀÇ ÄÚµå
+                    //ï¿½ï¿½ï¿½ï¿½Åºï¿½ï¿½ ï¿½Êµå¿¡ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å­ ï¿½ï¿½Ä¡ï¿½Ç¾ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Úµï¿½
                 }
             }
 
@@ -124,14 +129,17 @@ public class Player2 : Player
             }
         }
 
-        else if (player_state == State.Imprisoned)  //¹°Ç³¼± °¨¿Á
+        else if (player_state == State.Imprisoned)  //ï¿½ï¿½Ç³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         {
 
             ballon_timer += Time.deltaTime;
 
-            GetComponent<SpriteRenderer>().color = Color.blue;
+            //GetComponent<SpriteRenderer>().color = Color.blue;
+            animator.SetBool("IsImprisoned", true);
 
-            if ((Input.GetKeyDown(KeySetting.keys[KeyAction.ITEM2])) && needle >= 1) // case1: µzÃâ
+            collider2d.isTrigger = true;
+
+            if ((Input.GetKeyDown(KeySetting.keys[KeyAction.ITEM2])) && needle >= 1) // case1: ï¿½zï¿½ï¿½
             {
                 needle -= 1;
                 GetComponent<SpriteRenderer>().color = Color.white;
@@ -140,7 +148,7 @@ public class Player2 : Player
                 ballon_timer = 0;
             }
 
-            if (ballon_touched == true)                                             // case2: »ç¸Á
+            if (ballon_touched == true)                                             // case2: ï¿½ï¿½ï¿½
             {
                 player_state = State.Destroying;
             }
@@ -150,9 +158,10 @@ public class Player2 : Player
             }
         }
 
-        else if (player_state == State.Destroying)  //»ç¸Á
+        else if (player_state == State.Destroying)  //ï¿½ï¿½ï¿½
         {
             GetComponent<SpriteRenderer>().color = Color.white;
+            animator.SetBool("IsImprisoned", false);
             animator.SetTrigger("DIE1");
             Player.player1.player_state = State.Endgame;
             death_timer += Time.deltaTime;
@@ -164,8 +173,11 @@ public class Player2 : Player
             }
         }
 
-        else if (player_state == State.Immune)      //¹«Àû=>¹°Ç³¼± Å»Ãâ ½Ã »ç¿ë
+        else if (player_state == State.Immune)      //ï¿½ï¿½ï¿½ï¿½=>ï¿½ï¿½Ç³ï¿½ï¿½ Å»ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½
         {
+            collider2d.isTrigger = false;
+            animator.SetBool("IsImprisoned", false);
+
             ballon_timer += Time.deltaTime;
 
             if (ballon_timer >= 1)
@@ -174,7 +186,7 @@ public class Player2 : Player
             }
         }
 
-        else if (player_state == State.Turtle)     //°ÅºÏÀÌ ÇÃ·¹ÀÌ
+        else if (player_state == State.Turtle)     //ï¿½Åºï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½ï¿½
         {
             speed = basic_speed + speed_item * speed_increase;
 
@@ -233,20 +245,20 @@ public class Player2 : Player
             pposition = MapManager.instance.GetClosestCellPosition(transform.position); //player position -> pposition
             cur_tile_info = MapManager.instance.GetClosestTileInfo(transform.position); //current tile information
 
-            if (Input.GetKeyDown(KeySetting.keys[KeyAction.BALL2]))                     // ¹°Ç³¼± Å° ÀÔ·Â
+            if (Input.GetKeyDown(KeySetting.keys[KeyAction.BALL2]))                     // ï¿½ï¿½Ç³ï¿½ï¿½ Å° ï¿½Ô·ï¿½
             {
                 if (WaterBomb.num_of_cur_water_bomb < water_bomb_max + balloon_item)
                 {
-                    //¸ñÇ¥ À§Ä¡¿¡ ¿ÀºêÁ§Æ®(º®, »óÀÚ, ¹°ÆøÅº, ¹°ÁÙ±â, ¾ÆÀÌÅÛ µî)°¡ ¾øÀ» °æ¿ì¿¡¸¸ ¹°ÆøÅº ¼³Ä¡, ÇØ´ç Á¶°Ç È®ÀÎ ÇÊ¿ä
-                    if (MapManager.instance.GetClosestTileInfo(pposition).CheckState(TileInfo.State.none))
+                    //ï¿½ï¿½Ç¥ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½Åºï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ì¿¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Åº ï¿½ï¿½Ä¡
+                    if (!MapManager.instance.GetClosestTileInfo(pposition).CheckState((TileInfo.State)((int)TileInfo.State.wall + (int)TileInfo.State.box + (int)TileInfo.State.water_bomb)))
                     {
                         SoundPlay(audiolists[1]);
-                        GenerateWaterBomb(pposition, ballon_range + range_item);//¹°Ç³¼± ¿ÀºêÁ§Æ® »ý¼º<-ppostion+object »ý¼º ¸í·É¾î
+                        GenerateWaterBomb(pposition, ballon_range + range_item);//ï¿½ï¿½Ç³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½<-ppostion+object ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½É¾ï¿½
                     }
                 }
                 else
                 {
-                    //¹°ÆøÅºÀÌ ÇÊµå¿¡ ÃÖ´ë °¹¼ö¸¸Å­ ¼³Ä¡µÇ¾î ÀÖÀ» °æ¿ìÀÇ ÄÚµå
+                    //ï¿½ï¿½ï¿½ï¿½Åºï¿½ï¿½ ï¿½Êµå¿¡ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å­ ï¿½ï¿½Ä¡ï¿½Ç¾ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Úµï¿½
                 }
             }
 
@@ -263,7 +275,7 @@ public class Player2 : Player
             }
         }
 
-        else if (player_state == State.Pirate)     //ÇØÀû °ÅºÏÀÌ ÇÃ·¹ÀÌ
+        else if (player_state == State.Pirate)     //ï¿½ï¿½ï¿½ï¿½ ï¿½Åºï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½ï¿½
         {
             speed = basic_speed + speed_item * speed_increase;
 
@@ -322,20 +334,20 @@ public class Player2 : Player
             pposition = MapManager.instance.GetClosestCellPosition(transform.position); //player position -> pposition
             cur_tile_info = MapManager.instance.GetClosestTileInfo(transform.position); //current tile information
 
-            if (Input.GetKeyDown(KeySetting.keys[KeyAction.BALL2]))                     // ¹°Ç³¼± Å° ÀÔ·Â
+            if (Input.GetKeyDown(KeySetting.keys[KeyAction.BALL2]))                     // ï¿½ï¿½Ç³ï¿½ï¿½ Å° ï¿½Ô·ï¿½
             {
                 if (WaterBomb.num_of_cur_water_bomb < water_bomb_max + balloon_item)
                 {
-                    //¸ñÇ¥ À§Ä¡¿¡ ¿ÀºêÁ§Æ®(º®, »óÀÚ, ¹°ÆøÅº, ¹°ÁÙ±â, ¾ÆÀÌÅÛ µî)°¡ ¾øÀ» °æ¿ì¿¡¸¸ ¹°ÆøÅº ¼³Ä¡, ÇØ´ç Á¶°Ç È®ÀÎ ÇÊ¿ä
-                    if (MapManager.instance.GetClosestTileInfo(pposition).CheckState(TileInfo.State.none))
+                    //ï¿½ï¿½Ç¥ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½Åºï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ì¿¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Åº ï¿½ï¿½Ä¡
+                    if (!MapManager.instance.GetClosestTileInfo(pposition).CheckState((TileInfo.State)((int)TileInfo.State.wall + (int)TileInfo.State.box + (int)TileInfo.State.water_bomb)))
                     {
                         SoundPlay(audiolists[1]);
-                        GenerateWaterBomb(pposition, ballon_range + range_item);//¹°Ç³¼± ¿ÀºêÁ§Æ® »ý¼º<-ppostion+object »ý¼º ¸í·É¾î
+                        GenerateWaterBomb(pposition, ballon_range + range_item);//ï¿½ï¿½Ç³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½<-ppostion+object ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½É¾ï¿½
                     }
                 }
                 else
                 {
-                    //¹°ÆøÅºÀÌ ÇÊµå¿¡ ÃÖ´ë °¹¼ö¸¸Å­ ¼³Ä¡µÇ¾î ÀÖÀ» °æ¿ìÀÇ ÄÚµå
+                    //ï¿½ï¿½ï¿½ï¿½Åºï¿½ï¿½ ï¿½Êµå¿¡ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å­ ï¿½ï¿½Ä¡ï¿½Ç¾ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Úµï¿½
                 }
             }
 
@@ -416,5 +428,12 @@ public class Player2 : Player
         {
             animator.speed = 1;
         }
+    }
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+            if (Vector3.Distance(other.transform.position, transform.position) < 0.5f)
+                if(player_state == State.Imprisoned)
+                    player_state = State.Destroying;
     }
 }

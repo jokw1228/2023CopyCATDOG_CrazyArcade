@@ -13,25 +13,20 @@ public class ItemGenerator : MonoBehaviour
 {
     [SerializeField] List<ItemPrefabPair> item_prefabs;
     Dictionary<Item, GameObject> item_prefab_dict = new Dictionary<Item, GameObject>();
-    Dictionary<Item, int> item_stock = new Dictionary<Item, int>();
+    static Dictionary<Item, int> item_stock = new Dictionary<Item, int>();
 
     [Space]
-    public GameObject airplane_prefab;
-    public float airplane_generate_cycle;
-    float timer = 0f;
+    public GameObject item_airplane_prefab;
+    public GameObject water_bomb_airplane_prefab;
+    public float item_airplane_generate_cycle;
+    public float water_bomb_airplane_generate_cycle;
+    float item_airplane_timer = 0f;
+    float water_bomb_airplane_timer = 0f;
 
     public static Item random_item
     {
         get
         {
-            Dictionary<Item, int> item_stock = new Dictionary<Item, int>()
-            {
-                {Item.bubble, 10},
-                {Item.roller, 10},
-                {Item.fluid, 10},
-                {Item.none, 10}
-            };
-
             int stock_sum = 0;
 
             foreach (int s in item_stock.Values)
@@ -53,6 +48,7 @@ public class ItemGenerator : MonoBehaviour
     }
     private void Awake()
     {
+        item_stock = new Dictionary<Item, int>();
         foreach (ItemPrefabPair pair in item_prefabs) {
             item_prefab_dict.Add(pair.item, pair.prefab);
             item_stock.Add(pair.item, pair.stock);
@@ -60,15 +56,21 @@ public class ItemGenerator : MonoBehaviour
     }
     private void Update()
     {
-        if(timer > airplane_generate_cycle)
+        if(item_airplane_timer > item_airplane_generate_cycle)
         {
             if (!MapManager.instance.ItemOrBoxExist())
             {
-                timer = 0;
-                GenerateAirplane();
+                item_airplane_timer = 0;
+                GenerateItemAirplane();
             }
         }
-        timer += Time.deltaTime;
+        if (water_bomb_airplane_timer > water_bomb_airplane_generate_cycle)
+        {
+            water_bomb_airplane_timer = 0;
+            GenerateWaterBombAirplane();
+        }
+        item_airplane_timer += Time.deltaTime;
+        water_bomb_airplane_timer += Time.deltaTime;
     }
 
     public void GenerateItem(Item item, Vector2Int cell_index)
@@ -80,15 +82,26 @@ public class ItemGenerator : MonoBehaviour
         MapManager.instance.GetTileInfo(cell_index).AddItem(i_item);
     }
 
-    public void GenerateAirplane()
+    public void GenerateItemAirplane()
     {
-        int item_cnt = 2; //UnityEngine.Random.Range(1, 3);
-        bool is_from_right = true; // UnityEngine.Random.Range(0, 2) == 0;
+        int item_cnt = UnityEngine.Random.Range(1, 3);
+        bool is_from_right = UnityEngine.Random.Range(0, 2) == 0;
         Vector2 pos = new();
         pos.x = is_from_right ? MapManager.instance.right_tile_x : MapManager.instance.left_tile_x;
         pos.y = UnityEngine.Random.Range(MapManager.instance.bottom_tile_y, MapManager.instance.top_tile_y);
 
-        GameObject airplane = Instantiate<GameObject>(airplane_prefab, MapManager.instance.GetClosestCellPosition(pos), Quaternion.identity);
+        GameObject airplane = Instantiate<GameObject>(item_airplane_prefab, MapManager.instance.GetClosestCellPosition(pos), Quaternion.identity);
+        airplane.GetComponent<Airplane>().SetAirplane(is_from_right, item_cnt);
+    }
+    public void GenerateWaterBombAirplane()
+    {
+        int item_cnt = UnityEngine.Random.Range(1, 4);
+        bool is_from_right =  UnityEngine.Random.Range(0, 2) == 0;
+        Vector2 pos = new();
+        pos.x = is_from_right ? MapManager.instance.right_tile_x : MapManager.instance.left_tile_x;
+        pos.y = UnityEngine.Random.Range(MapManager.instance.bottom_tile_y, MapManager.instance.top_tile_y);
+
+        GameObject airplane = Instantiate<GameObject>(water_bomb_airplane_prefab, MapManager.instance.GetClosestCellPosition(pos), Quaternion.identity);
         airplane.GetComponent<Airplane>().SetAirplane(is_from_right, item_cnt);
     }
 }
