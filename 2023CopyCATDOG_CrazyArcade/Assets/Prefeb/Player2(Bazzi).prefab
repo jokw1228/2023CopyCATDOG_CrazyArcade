@@ -350,7 +350,7 @@ MonoBehaviour:
   range_item: 0
   water_bomb_max: 1
   balloon_item: 0
-  speed_item: 1
+  speed_item: 2
   speed: 5
   ballon_timer: 0
   Standby_timer: 0
