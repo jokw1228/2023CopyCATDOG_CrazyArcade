@@ -83,7 +83,9 @@ public class WaterBomb : InteractableObject
     public void Bomb()
     {
         if (!is_bombed)
+        {
             StartCoroutine(BombCoroutine());
+        }
     }
 
     IEnumerator BombCoroutine()
