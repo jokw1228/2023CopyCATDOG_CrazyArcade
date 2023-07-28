@@ -33,6 +33,17 @@ public class WaterBomb : InteractableObject
 
     bool is_bombed = false;
 
+    public AudioSource sound;
+    public AudioClip[] audiolists;
+
+    public void SoundPlay(AudioClip clip)
+    {
+        sound.clip = clip;
+        sound.loop = false;
+        sound.volume = 0.5f;
+        sound.Play();
+    }
+
     private void Awake()
     {
         collider2d = GetComponent<Collider2D>();
@@ -59,6 +70,7 @@ public class WaterBomb : InteractableObject
         }
 
         Invoke("Bomb", bomb_time);
+        SoundPlay(audiolists[0]);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -83,7 +95,6 @@ public class WaterBomb : InteractableObject
         water_ray_center.Gernerate(MapManager.instance.GetCellPosition(cell_index));
 
         WaitForSeconds wait =  new WaitForSeconds(water_ray_spread_span);
-
         for (int i = 1; i <= bomb_range; i++)
         {        
             yield return wait;
