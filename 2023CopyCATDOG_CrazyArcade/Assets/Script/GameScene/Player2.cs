@@ -24,6 +24,17 @@ public class Player2 : Player
     public GameObject turtle;
     public GameObject pirate_turtle;
 
+    public AudioSource sound;
+    public AudioClip[] audiolists;
+
+    public void SoundPlay(AudioClip clip)
+    {
+        sound.clip = clip;
+        sound.loop = false;
+        sound.volume = 0.1f;
+        sound.Play();
+    }
+
     void Update()
     {
         if (player_state == State.Playing)          //플레이
@@ -90,7 +101,10 @@ public class Player2 : Player
                 {
                     //목표 위치에 오브젝트(벽, 상자, 물폭탄, 물줄기, 아이템 등)가 없을 경우에만 물폭탄 설치, 해당 조건 확인 필요
                     if (MapManager.instance.GetClosestTileInfo(pposition).CheckState(TileInfo.State.none))
+                    {
                         GenerateWaterBomb(pposition, ballon_range + range_item);//물풍선 오브젝트 생성<-ppostion+object 생성 명령어
+                        SoundPlay(audiolists[1]);
+                    }
                 }
                 else
                 {
@@ -106,6 +120,7 @@ public class Player2 : Player
             if (cur_tile_info.CheckState(TileInfo.State.item))
             {
                 cur_tile_info.UseItem(this);
+                SoundPlay(audiolists[0]);
             }
         }
 
@@ -121,6 +136,7 @@ public class Player2 : Player
                 needle -= 1;
                 GetComponent<SpriteRenderer>().color = Color.white;
                 player_state = State.Immune;
+                SoundPlay(audiolists[2]);
                 ballon_timer = 0;
             }
 
@@ -142,6 +158,7 @@ public class Player2 : Player
             death_timer += Time.deltaTime;
             if (death_timer >= 1)
             {
+                SoundPlay(audiolists[3]);
                 GameManager.Inst.GameOver();
                 Destroy(gameObject);
             }
@@ -222,7 +239,10 @@ public class Player2 : Player
                 {
                     //목표 위치에 오브젝트(벽, 상자, 물폭탄, 물줄기, 아이템 등)가 없을 경우에만 물폭탄 설치, 해당 조건 확인 필요
                     if (MapManager.instance.GetClosestTileInfo(pposition).CheckState(TileInfo.State.none))
+                    {
+                        SoundPlay(audiolists[1]);
                         GenerateWaterBomb(pposition, ballon_range + range_item);//물풍선 오브젝트 생성<-ppostion+object 생성 명령어
+                    }
                 }
                 else
                 {
@@ -239,6 +259,7 @@ public class Player2 : Player
             if (cur_tile_info.CheckState(TileInfo.State.item))
             {
                 cur_tile_info.UseItem(this);
+                SoundPlay(audiolists[0]);
             }
         }
 
@@ -307,7 +328,10 @@ public class Player2 : Player
                 {
                     //목표 위치에 오브젝트(벽, 상자, 물폭탄, 물줄기, 아이템 등)가 없을 경우에만 물폭탄 설치, 해당 조건 확인 필요
                     if (MapManager.instance.GetClosestTileInfo(pposition).CheckState(TileInfo.State.none))
+                    {
+                        SoundPlay(audiolists[1]);
                         GenerateWaterBomb(pposition, ballon_range + range_item);//물풍선 오브젝트 생성<-ppostion+object 생성 명령어
+                    }
                 }
                 else
                 {
@@ -324,6 +348,7 @@ public class Player2 : Player
             if (cur_tile_info.CheckState(TileInfo.State.item))
             {
                 cur_tile_info.UseItem(this);
+                SoundPlay(audiolists[0]);
             }
         }
 
@@ -333,6 +358,7 @@ public class Player2 : Player
             Debug.Log("Stand");
             if (Standby_timer >= 1)
             {
+                SoundPlay(audiolists[4]);
                 Standby_timer = 0;
                 player_state = State.Playing;
             }
