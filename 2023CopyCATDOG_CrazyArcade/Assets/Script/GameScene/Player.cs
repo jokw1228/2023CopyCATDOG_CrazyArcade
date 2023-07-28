@@ -163,12 +163,4 @@ public class Player : MonoBehaviour
     {
         player_state = State.Pirate;
     }
-    public void Bush()
-    {
-        
-        Debug.Log("bbbbbbbush");
-        Debug.Log(gameObject.name);
-        transform.gameObject.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0f);
-
-    }
 }
