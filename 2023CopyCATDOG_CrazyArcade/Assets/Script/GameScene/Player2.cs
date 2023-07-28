@@ -139,9 +139,9 @@ public class Player2 : Player
 
             collider2d.isTrigger = true;
 
-            if ((Input.GetKeyDown(KeySetting.keys[KeyAction.ITEM2])) && needle >= 1) // case1: �z��
+            if ((Input.GetKeyDown(KeySetting.keys[KeyAction.ITEM2])) && active_item_slot == ActiveItem.needle) // case1: �z��
             {
-                needle -= 1;
+                active_item_slot = ActiveItem.none;
                 GetComponent<SpriteRenderer>().color = Color.white;
                 player_state = State.Immune;
                 SoundPlay(audiolists[2]);

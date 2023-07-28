@@ -5,13 +5,25 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    protected MapManager.Direction direction = MapManager.Direction.down;
     public GameObject waterbomb_prefab;                                 //¹°Ç³¼± ÇÁ¸®ÆÕ
     public void GenerateWaterBomb(Vector2 position, int bomb_range)     //¹°Ç³¼± »ý¼º ÇÔ¼ö
     {
         GameObject bomb = Instantiate<GameObject>(waterbomb_prefab, position, Quaternion.identity);
         bomb.GetComponent<WaterBomb>().bomb_range = bomb_range;
     }
+    public GameObject wind;
+    public void GenerateWind(MapManager.Direction direction)
+    {
+        GameObject wind_instance;
+        wind_instance = Instantiate<GameObject>(wind, MapManager.instance.GetCellPosition(cell_index), Quaternion.identity);
+        wind_instance.GetComponent<Wind>().direction = direction;
+    }
+    public GameObject Raser;
+    public void GenerateRaser(Vector2 position, MapManager.Direction direction)
+    {
 
+    }
     //º¯¼öµé
     public enum State
     {
@@ -39,7 +51,8 @@ public class Player : MonoBehaviour
     public float Standby_timer = 0;
     public float death_timer = 0;
 
-    public int needle = 1;//enum ActiveItem { none, needle, wind, raser}
+    protected enum ActiveItem { none, needle, wind, laser}
+    protected ActiveItem active_item_slot = ActiveItem.none;
 
     public bool ballon_touched =false;
 
@@ -77,10 +90,6 @@ public class Player : MonoBehaviour
     {
         speed_item++;
     }
-    public void NeedleIncrease()
-    {
-        needle++;  
-    }
     public void Turtle()
     {
         player_state = State.Turtle;
@@ -88,5 +97,17 @@ public class Player : MonoBehaviour
     public void Pirate()
     {
         player_state = State.Pirate;
+    }
+    public void GainNeedle()
+    {
+        active_item_slot = ActiveItem.needle;
+    }
+    public void GainWind()
+    {
+        active_item_slot = ActiveItem.wind;
+    }
+    public void GainrLaser()
+    {
+        active_item_slot = ActiveItem.laser;
     }
 }
