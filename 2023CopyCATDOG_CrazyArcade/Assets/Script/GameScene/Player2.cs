@@ -370,7 +370,6 @@ public class Player2 : Player
             Debug.Log("Stand");
             if (Standby_timer >= 1)
             {
-                SoundPlay(audiolists[4]);
                 Standby_timer = 0;
                 player_state = State.Playing;
             }

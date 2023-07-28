@@ -168,7 +168,6 @@ public class Player1 : Player
                 SoundPlay(audiolists[3]);
                 GameManager.Inst.GameOver();
                 Destroy(gameObject);
-                SoundPlay(audiolists[4]);
             }
         }
 
@@ -378,7 +377,7 @@ public class Player1 : Player
 
         else if (player_state == State.Endgame)
         {
-            SoundPlay(audiolists[4]);
+
         }
     }
 
