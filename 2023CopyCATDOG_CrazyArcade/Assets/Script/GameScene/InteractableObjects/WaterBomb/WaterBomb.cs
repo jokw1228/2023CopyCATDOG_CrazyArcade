@@ -68,10 +68,12 @@ public class WaterBomb : InteractableObject
         }
     }
 
+    public GameObject waterbombsound; 
     public void Bomb()
     {
         if (!is_bombed)
         {
+            GameObject BombSound = Instantiate<GameObject>(waterbombsound, new Vector3(0, 0, 0), Quaternion.identity);
             StartCoroutine(BombCoroutine());
         }
     }
