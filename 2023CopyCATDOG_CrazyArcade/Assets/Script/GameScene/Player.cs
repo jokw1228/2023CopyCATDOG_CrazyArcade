@@ -33,7 +33,7 @@ public class Player : MonoBehaviour
     public int speed_item = 0;
     public float speed = basic_speed;
 
-    public const float speed_increase = 1;
+    public const float speed_increase = 0.5f;
 
     public float ballon_timer = 0;
     public float Standby_timer = 0;

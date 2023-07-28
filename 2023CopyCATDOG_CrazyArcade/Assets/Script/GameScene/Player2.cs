@@ -190,7 +190,7 @@ public class Player2 : Player
 
         else if (player_state == State.Turtle)     //�ź��� �÷���
         {
-            speed = basic_speed + speed_item * speed_increase;
+            speed = 2;
 
             GetComponent<SpriteRenderer>().color = Color.green;
 
@@ -269,6 +269,7 @@ public class Player2 : Player
                 player_state = State.Immune;
                 Debug.Log("Hit");
                 this.turtle.SetActive(false);
+                this.pirate_turtle.SetActive(false);
             }
             if (cur_tile_info.CheckState(TileInfo.State.item))
             {
@@ -279,7 +280,7 @@ public class Player2 : Player
 
         else if (player_state == State.Pirate)     //���� �ź��� �÷���
         {
-            speed = basic_speed + speed_item * speed_increase;
+            speed = 8;
 
             GetComponent<SpriteRenderer>().color = Color.red;
 
@@ -357,6 +358,7 @@ public class Player2 : Player
             {
                 player_state = State.Immune;
                 Debug.Log("Hit");
+                this.turtle.SetActive(false);
                 this.pirate_turtle.SetActive(false);
             }
             if (cur_tile_info.CheckState(TileInfo.State.item))
