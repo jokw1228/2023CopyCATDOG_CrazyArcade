@@ -7,7 +7,7 @@ public static class KeySetting { public static Dictionary<KeyAction, KeyCode> ke
 //KeyAction과 KeyCode를 key값과 value값으로 한 딕셔너리 생성
 public class KeyManager : Singleton<KeyManager>
 {
-    KeyCode[] defaultKeys = new KeyCode[] { KeyCode.W, KeyCode.S, KeyCode.A, KeyCode.D, KeyCode.LeftShift, KeyCode.LeftControl, KeyCode.UpArrow, KeyCode.DownArrow, KeyCode.LeftArrow, KeyCode.RightArrow, KeyCode.RightShift, KeyCode.RightControl };
+    KeyCode[] defaultKeys = new KeyCode[] { KeyCode.W, KeyCode.S, KeyCode.A, KeyCode.D, KeyCode.LeftShift, KeyCode.LeftControl, KeyCode.UpArrow, KeyCode.DownArrow, KeyCode.LeftArrow, KeyCode.RightArrow, KeyCode.RightShift, KeyCode.Slash };
     protected override void Awake()
     {
         base.Awake();

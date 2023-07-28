@@ -5,8 +5,9 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public GameObject waterbomb_prefab;                                 //¹°Ç³¼± ÇÁ¸®ÆÕ
-    public WaterBomb GenerateWaterBomb(Vector2 position, int bomb_range)     //¹°Ç³¼± »ý¼º ÇÔ¼ö
+    protected MapManager.Direction direction = MapManager.Direction.down;
+    public GameObject waterbomb_prefab;                                 //ï¿½ï¿½Ç³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    public WaterBomb GenerateWaterBomb(Vector2 position, int bomb_range)     //ï¿½ï¿½Ç³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ô¼ï¿½
     {
         WaterBomb water_bomb = Instantiate<GameObject>(waterbomb_prefab, position, Quaternion.identity).GetComponent<WaterBomb>();
         
@@ -14,8 +15,15 @@ public class Player : MonoBehaviour
 
         return water_bomb;
     }
-
-    //º¯¼öµé
+    public GameObject wind;
+    protected void GenerateWind(MapManager.Direction direction)
+    {
+        Debug.Log("use wind");
+        GameObject wind_instance;
+        wind_instance = Instantiate<GameObject>(wind, MapManager.instance.GetCellPosition(cell_index), Quaternion.identity);
+        wind_instance.GetComponent<Wind>().direction = direction;
+    }
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     public enum State
     {
         Standby=0, Imprisoned=1, Destroying=2, Immune=3, Turtle=4, Pirate=5, Playing=6, Endgame=7
@@ -42,7 +50,8 @@ public class Player : MonoBehaviour
     public float Standby_timer = 0;
     public float death_timer = 0;
 
-    public int needle = 1;//enum ActiveItem { none, needle, wind, raser}
+    protected enum ActiveItem { none, needle, wind}
+    protected ActiveItem active_item_slot = ActiveItem.none;
 
     public bool ballon_touched =false;
 
@@ -80,10 +89,6 @@ public class Player : MonoBehaviour
     {
         speed_item++;
     }
-    public void NeedleIncrease()
-    {
-        needle++;  
-    }
     public void Turtle()
     {
         player_state = State.Turtle;
@@ -91,5 +96,13 @@ public class Player : MonoBehaviour
     public void Pirate()
     {
         player_state = State.Pirate;
+    }
+    public void GainNeedle()
+    {
+        active_item_slot = ActiveItem.needle;
+    }
+    public void GainWind()
+    {
+        active_item_slot = ActiveItem.wind;
     }
 }

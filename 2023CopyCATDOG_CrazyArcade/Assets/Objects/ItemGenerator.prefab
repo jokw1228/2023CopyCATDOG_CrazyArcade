@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8499038697225136056
 MonoBehaviour:
@@ -56,14 +56,17 @@ MonoBehaviour:
     stock: 10
   - item: 4
     prefab: {fileID: 4462755395161376931, guid: 730cdfad9c526074dba47ceb9ac74357, type: 3}
-    stock: 10
+    stock: 2
   - item: 5
     prefab: {fileID: 3248609195018327771, guid: d1e7a60665e933c42885d1bb216efc84, type: 3}
-    stock: 10
+    stock: 5
   - item: 6
     prefab: {fileID: 6565263333477181222, guid: 7ebfac9ec40104c4bb20a3b58c9e4b8c, type: 3}
-    stock: 10
+    stock: 3
+  - item: 7
+    prefab: {fileID: 6889997805311259456, guid: f4349fc816efd75499fbce3b53243f57, type: 3}
+    stock: 5
   item_airplane_prefab: {fileID: 3869888368737847641, guid: b816d25db7de92248a452b1a4ebcbfa3, type: 3}
   water_bomb_airplane_prefab: {fileID: 3869888368737847641, guid: 3b4a89e1f7552f748add40dce09bf642, type: 3}
   item_airplane_generate_cycle: 20
-  water_bomb_airplane_generate_cycle: 20
+  water_bomb_airplane_generate_cycle: 40

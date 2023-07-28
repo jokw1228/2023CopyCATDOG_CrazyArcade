@@ -117,6 +117,18 @@ public class Player2 : Player
                 }
             }
 
+            if (Input.GetKeyDown(KeySetting.keys[KeyAction.ITEM2]))
+            {
+                switch (active_item_slot)
+                {
+                    case ActiveItem.wind:
+                        GenerateWind(direction);
+                        active_item_slot = ActiveItem.none;
+                        break;
+                }
+
+            }
+
             if (cur_tile_info.CheckState(TileInfo.State.water_ray))
             {
                 player_state = State.Imprisoned;
@@ -139,9 +151,9 @@ public class Player2 : Player
 
             collider2d.isTrigger = true;
 
-            if ((Input.GetKeyDown(KeySetting.keys[KeyAction.ITEM2])) && needle >= 1) // case1: �z��
+            if ((Input.GetKeyDown(KeySetting.keys[KeyAction.ITEM2])) && active_item_slot == ActiveItem.needle) // case1: �z��
             {
-                needle -= 1;
+                active_item_slot = ActiveItem.none;
                 GetComponent<SpriteRenderer>().color = Color.white;
                 player_state = State.Immune;
                 SoundPlay(audiolists[2]);
@@ -264,6 +276,18 @@ public class Player2 : Player
                 }
             }
 
+            if (Input.GetKeyDown(KeySetting.keys[KeyAction.ITEM2]))
+            {
+                switch (active_item_slot)
+                {
+                    case ActiveItem.wind:
+                        GenerateWind(direction);
+                        active_item_slot = ActiveItem.none;
+                        break;
+                }
+
+            }
+
             if (cur_tile_info.CheckState(TileInfo.State.water_ray))
             {
                 player_state = State.Immune;
@@ -354,6 +378,18 @@ public class Player2 : Player
                 }
             }
 
+            if (Input.GetKeyDown(KeySetting.keys[KeyAction.ITEM2]))
+            {
+                switch (active_item_slot)
+                {
+                    case ActiveItem.wind:
+                        GenerateWind(direction);
+                        active_item_slot = ActiveItem.none;
+                        break;
+                }
+
+            }
+
             if (cur_tile_info.CheckState(TileInfo.State.water_ray))
             {
                 player_state = State.Immune;
@@ -394,6 +430,7 @@ public class Player2 : Player
             {
                 animator.speed = 1;
                 animator.SetTrigger("UP1");
+                direction = MapManager.Direction.up;
                 Vector2 move = new Vector2(0, 1);
                 transform.Translate(move * Time.deltaTime * speed);
             }
@@ -401,6 +438,7 @@ public class Player2 : Player
             {
                 animator.speed = 1;
                 animator.SetTrigger("DOWN1");
+                direction = MapManager.Direction.down;
                 Vector2 move = new Vector2(0, -1);
                 transform.Translate(move * Time.deltaTime * speed);
             }
@@ -408,6 +446,7 @@ public class Player2 : Player
             {
                 animator.speed = 1;
                 animator.SetTrigger("RIGHT1");
+                direction = MapManager.Direction.right;
                 Vector2 move = new Vector2(1, 0);
                 transform.Translate(move * Time.deltaTime * speed);
             }
@@ -415,6 +454,7 @@ public class Player2 : Player
             {
                 animator.speed = 1;
                 animator.SetTrigger("LEFT1");
+                direction = MapManager.Direction.left;
                 Vector2 move = new Vector2(-1, 0);
                 transform.Translate(move * Time.deltaTime * speed);
             }

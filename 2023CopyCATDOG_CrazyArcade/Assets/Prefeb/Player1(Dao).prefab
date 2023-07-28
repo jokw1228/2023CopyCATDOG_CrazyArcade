@@ -273,6 +273,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waterbomb_prefab: {fileID: 3286163095739512778, guid: 8bce674c8f8a0e5478d867b053acb7e0, type: 3}
+  wind: {fileID: 5696182080629845161, guid: bbb05127cb9f6c94fb9b392e3e657fb9, type: 3}
+  Raser: {fileID: 0}
   player_state: 0
   ballon_range: 1
   range_item: 0
@@ -283,7 +285,6 @@ MonoBehaviour:
   ballon_timer: 0
   Standby_timer: 0
   death_timer: 0
-  needle: 1
   ballon_touched: 0
   pposition: {x: 0, y: 0}
   pindex: {x: 0, y: 0}

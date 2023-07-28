@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Needle : InteractableObject, IItem
+public class WindItem : InteractableObject, IItem
 {
     void IItem.OnGetItem(Player player)
     {
-        player.GainNeedle();
+        player.GainWind();
     }
     void IItem.Remove()
     {
@@ -21,11 +21,5 @@ public class Needle : InteractableObject, IItem
         state = TileInfo.State.item;
 
         MapManager.instance.GetTileInfo(cell_index).AddItem(this);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }
