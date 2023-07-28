@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class WaterBombSound: MonoBehaviour
 {
-	public GameObject Boomsound;
+
 	public AudioSource boomsound;
 	public AudioClip[] boomclip;
 

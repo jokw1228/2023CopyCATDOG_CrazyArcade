@@ -25,6 +25,11 @@ public class GameManager : Singleton<GameManager>
 
     public AudioSource Bgm;
     public AudioClip[] BgmList;
+
+    public GameObject Sound;
+    public float GameEnd_timer = 0;
+
+
     private void Start()
     {
         if (characters1.Length > 0)
@@ -167,12 +172,15 @@ public class GameManager : Singleton<GameManager>
                 break;
             case 1:
                 SceneManager.LoadScene("GameScene1");
+                GameObject sound1 = Instantiate<GameObject>(Sound, new Vector3(0, 0, 0), Quaternion.identity);
                 break;
             case 2:
                 SceneManager.LoadScene("GameScene2");
+                GameObject sound2 = Instantiate<GameObject>(Sound, new Vector3(0, 0, 0), Quaternion.identity);
                 break;
             case 3:
                 SceneManager.LoadScene("GameScene3");
+                GameObject sound3 = Instantiate<GameObject>(Sound, new Vector3(0, 0, 0), Quaternion.identity);
                 break;
             case 4:
                 SceneManager.LoadScene("RuleScene");

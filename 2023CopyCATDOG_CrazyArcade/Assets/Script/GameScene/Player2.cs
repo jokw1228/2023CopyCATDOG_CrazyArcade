@@ -151,10 +151,12 @@ public class Player2 : Player
             if (ballon_touched == true)                                             // case2: ���
             {
                 player_state = State.Destroying;
+                SoundPlay(audiolists[3]);
             }
             if (ballon_timer > 3)
             {
                 player_state = State.Destroying;
+                SoundPlay(audiolists[3]);
             }
         }
 
@@ -167,7 +169,7 @@ public class Player2 : Player
             death_timer += Time.deltaTime;
             if (death_timer >= 1)
             {
-                SoundPlay(audiolists[3]);
+                death_timer = 0;
                 GameManager.Inst.GameOver();
                 Destroy(gameObject);
             }
