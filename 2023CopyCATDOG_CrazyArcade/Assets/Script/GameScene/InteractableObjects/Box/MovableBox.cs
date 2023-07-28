@@ -60,8 +60,6 @@ public class MovableBox : Box
 
     IEnumerator Moving(Vector3 target_position)
     {
-        Debug.Break();
-
         MapManager.instance.GetTileInfo(cell_index).DelBox();
         cell_index = MapManager.instance.GetClosestCellIndex(new Vector2(transform.position.x, transform.position.y));
         MapManager.instance.GetTileInfo(cell_index).AddBox(this);

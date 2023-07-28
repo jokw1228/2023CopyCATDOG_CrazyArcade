@@ -6,10 +6,13 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public GameObject waterbomb_prefab;                                 //물풍선 프리팹
-    public void GenerateWaterBomb(Vector2 position, int bomb_range)     //물풍선 생성 함수
+    public WaterBomb GenerateWaterBomb(Vector2 position, int bomb_range)     //물풍선 생성 함수
     {
-        GameObject bomb = Instantiate<GameObject>(waterbomb_prefab, position, Quaternion.identity);
-        bomb.GetComponent<WaterBomb>().bomb_range = bomb_range;
+        WaterBomb water_bomb = Instantiate<GameObject>(waterbomb_prefab, position, Quaternion.identity).GetComponent<WaterBomb>();
+        
+        water_bomb.bomb_range = bomb_range;
+
+        return water_bomb;
     }
 
     //변수들

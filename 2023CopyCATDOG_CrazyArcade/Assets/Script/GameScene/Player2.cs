@@ -102,12 +102,12 @@ public class Player2 : Player
             if (Input.GetKeyDown(KeySetting.keys[KeyAction.BALL2]))                     // ��ǳ�� Ű �Է�
             {
 
-                if (WaterBomb.num_of_cur_water_bomb < water_bomb_max + balloon_item)
+                if (WaterBomb.player2_water_bomb_cnt < water_bomb_max + balloon_item)
                 {
                     //��ǥ ��ġ�� ��, ����, ����ź�� ���� ��쿡�� ����ź ��ġ
                     if (!MapManager.instance.GetClosestTileInfo(pposition).CheckState((TileInfo.State)((int)TileInfo.State.wall + (int)TileInfo.State.box + (int)TileInfo.State.water_bomb)))
                     {
-                        GenerateWaterBomb(pposition, ballon_range + range_item);//��ǳ�� ������Ʈ ����<-ppostion+object ���� ��ɾ�
+                        GenerateWaterBomb(pposition, ballon_range + range_item).generate_by = WaterBomb.GenerateBy.player2;//��ǳ�� ������Ʈ ����<-ppostion+object ���� ��ɾ�
                         SoundPlay(audiolists[1]);
                     }
                 }
@@ -249,13 +249,13 @@ public class Player2 : Player
 
             if (Input.GetKeyDown(KeySetting.keys[KeyAction.BALL2]))                     // ��ǳ�� Ű �Է�
             {
-                if (WaterBomb.num_of_cur_water_bomb < water_bomb_max + balloon_item)
+                if (WaterBomb.player2_water_bomb_cnt < water_bomb_max + balloon_item)
                 {
                     //��ǥ ��ġ�� ��, ����, ����ź�� ���� ��쿡�� ����ź ��ġ
                     if (!MapManager.instance.GetClosestTileInfo(pposition).CheckState((TileInfo.State)((int)TileInfo.State.wall + (int)TileInfo.State.box + (int)TileInfo.State.water_bomb)))
                     {
                         SoundPlay(audiolists[1]);
-                        GenerateWaterBomb(pposition, ballon_range + range_item);//��ǳ�� ������Ʈ ����<-ppostion+object ���� ��ɾ�
+                        GenerateWaterBomb(pposition, ballon_range + range_item).generate_by = WaterBomb.GenerateBy.player2;//��ǳ�� ������Ʈ ����<-ppostion+object ���� ��ɾ�
                     }
                 }
                 else
@@ -339,13 +339,13 @@ public class Player2 : Player
 
             if (Input.GetKeyDown(KeySetting.keys[KeyAction.BALL2]))                     // ��ǳ�� Ű �Է�
             {
-                if (WaterBomb.num_of_cur_water_bomb < water_bomb_max + balloon_item)
+                if (WaterBomb.player2_water_bomb_cnt < water_bomb_max + balloon_item)
                 {
                     //��ǥ ��ġ�� ��, ����, ����ź�� ���� ��쿡�� ����ź ��ġ
                     if (!MapManager.instance.GetClosestTileInfo(pposition).CheckState((TileInfo.State)((int)TileInfo.State.wall + (int)TileInfo.State.box + (int)TileInfo.State.water_bomb)))
                     {
                         SoundPlay(audiolists[1]);
-                        GenerateWaterBomb(pposition, ballon_range + range_item);//��ǳ�� ������Ʈ ����<-ppostion+object ���� ��ɾ�
+                        GenerateWaterBomb(pposition, ballon_range + range_item).generate_by = WaterBomb.GenerateBy.player2;//��ǳ�� ������Ʈ ����<-ppostion+object ���� ��ɾ�
                     }
                 }
                 else

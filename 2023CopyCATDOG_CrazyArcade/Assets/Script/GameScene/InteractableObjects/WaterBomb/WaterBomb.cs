@@ -5,7 +5,39 @@ using UnityEngine;
 
 public class WaterBomb : InteractableObject
 {
-    public static int num_of_cur_water_bomb = 0;
+    public static int all_water_bomb_cnt = 0;
+    public static int player1_water_bomb_cnt = 0;
+    public static int player2_water_bomb_cnt = 0;
+
+    void IncreaseWaterBombCnt()
+    {
+        switch (generate_by) 
+        {
+            case GenerateBy.player1:
+                player1_water_bomb_cnt++;
+                break;
+            case GenerateBy.player2:
+                player2_water_bomb_cnt++;
+                break;
+        }
+        all_water_bomb_cnt++;
+    }
+    void DecreaseWaterBombCnt()
+    {
+        switch (generate_by)
+        {
+            case GenerateBy.player1:
+                player1_water_bomb_cnt--;
+                break;
+            case GenerateBy.player2:
+                player2_water_bomb_cnt--;
+                break;
+        }
+        all_water_bomb_cnt--;
+    }
+
+    public enum GenerateBy { other ,player1, player2 }
+    public GenerateBy generate_by = GenerateBy.other;
 
     public float bomb_time;
     public int bomb_range;
@@ -46,7 +78,7 @@ public class WaterBomb : InteractableObject
         state = TileInfo.State.water_bomb;
 
         MapManager.instance.tile_infos[cell_index.x, cell_index.y].AddWaterBomb(this);
-        num_of_cur_water_bomb++;
+        IncreaseWaterBombCnt();
 
         water_rays.Add(MapManager.Direction.up, water_ray_up);
         water_rays.Add(MapManager.Direction.right, water_ray_right);
@@ -97,7 +129,7 @@ public class WaterBomb : InteractableObject
             GenerateWaterRay(cell_index + Vector2Int.left * i, MapManager.Direction.left);
         }
 
-        num_of_cur_water_bomb--;
+        DecreaseWaterBombCnt();
         Destroy(gameObject);
         yield break;
     }
