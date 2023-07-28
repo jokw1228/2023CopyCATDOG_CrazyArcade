@@ -101,7 +101,7 @@ MonoBehaviour:
   sound: {fileID: 6773030653747588201}
   soundclip:
   - {fileID: 8300000, guid: c40e3580c1dfacd4485f62482baf7f59, type: 3}
-  - {fileID: 8300000, guid: 7721bef47a824ab4fb6f334bc37261f4, type: 3}
+  - {fileID: 8300000, guid: 8c9c4009968242b40a5cfa779b801d3f, type: 3}
 --- !u!82 &6773030653747588201
 AudioSource:
   m_ObjectHideFlags: 0

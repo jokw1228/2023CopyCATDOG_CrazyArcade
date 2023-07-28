@@ -351,7 +351,7 @@ MonoBehaviour:
   water_bomb_max: 1
   balloon_item: 0
   speed_item: 0
-  speed: 5
+  speed: 6
   ballon_timer: 0
   Standby_timer: 0
   death_timer: 0

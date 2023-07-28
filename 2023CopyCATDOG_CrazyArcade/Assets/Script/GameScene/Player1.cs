@@ -176,6 +176,7 @@ public class Player1 : Player
 
         else if (player_state == State.Immune)      //����=>��ǳ�� Ż�� �� ���
         {
+            speed = basic_speed + speed_item * speed_increase;
             collider2d.isTrigger = false;
             animator.SetBool("IsImprisoned", false);
 
@@ -190,7 +191,7 @@ public class Player1 : Player
 
         else if (player_state == State.Turtle)     //�ź��� �÷���
         {
-            speed = basic_speed + speed_item * speed_increase;
+            speed = basic_speed + speed_item * speed_increase - 3;
 
             GetComponent<SpriteRenderer>().color = Color.green;
 
@@ -279,7 +280,7 @@ public class Player1 : Player
 
         else if (player_state == State.Pirate)     //���� �ź��� �÷���
         {
-            speed = basic_speed + speed_item * speed_increase;
+            speed = basic_speed + speed_item * speed_increase + 3;
 
             GetComponent<SpriteRenderer>().color = Color.red;
 

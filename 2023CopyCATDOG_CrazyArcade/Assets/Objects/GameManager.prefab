@@ -2129,7 +2129,7 @@ Transform:
   m_Children:
   - {fileID: 7318756458813574985}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8301970866762348790
 MonoBehaviour:
@@ -2193,6 +2193,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 62d8ce96e9471ce45acf7809b989366a, type: 3}
   - {fileID: 8300000, guid: a5bfc183812d8e64f817ee32e5892cf6, type: 3}
   - {fileID: 8300000, guid: 245c8e0007e62234fa34865a4c588bb3, type: 3}
+  Sound: {fileID: 0}
+  GameEnd_timer: 0
 --- !u!82 &8856700833020820603
 AudioSource:
   m_ObjectHideFlags: 0

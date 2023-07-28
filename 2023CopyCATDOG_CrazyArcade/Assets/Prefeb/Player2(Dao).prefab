@@ -264,7 +264,7 @@ MonoBehaviour:
   player_state: 0
   ballon_range: 1
   range_item: 0
-  water_bomb_max: 1
+  water_bomb_max: 2
   balloon_item: 0
   speed_item: 0
   speed: 5
