@@ -9,7 +9,7 @@ public class MovableBox : Box
     Rigidbody2D rigidbody2d;
     Vector2 cur_velocity = Vector2.zero;
 
-    const float moving_tirigger_distance = 0.19f;
+    const float moving_tirigger_distance = 0.035f;
     Vector2 displacement = Vector2.zero;
 
     const float moving_speed = 2.5f;
@@ -33,16 +33,6 @@ public class MovableBox : Box
                 MapManager.instance.GetTileInfo(cell_index).DelBox();
                 MapManager.instance.GetTileInfo(next_cell_index).AddBox(this);
                 cell_index = next_cell_index;
-            }
-
-            displacement = rigidbody2d.position - (Vector2)MapManager.instance.GetCellPosition(cell_index);
-            if (displacement.x > moving_tirigger_distance) { MoveTo(cell_index + Vector2Int.right); }
-            else if(displacement.x < -moving_tirigger_distance) { MoveTo(cell_index + Vector2Int.left); }
-            else if (displacement.y > moving_tirigger_distance) { MoveTo(cell_index + Vector2Int.up); }
-            else if (displacement.y < -moving_tirigger_distance) { MoveTo(cell_index + Vector2Int.down); }
-            else //if(displacement.magnitude > 0.05f)
-            {
-                ResetPosition();
             }
         }
 
@@ -70,7 +60,11 @@ public class MovableBox : Box
 
     IEnumerator Moving(Vector3 target_position)
     {
+        Debug.Break();
+
         MapManager.instance.GetTileInfo(cell_index).DelBox();
+        cell_index = MapManager.instance.GetClosestCellIndex(new Vector2(transform.position.x, transform.position.y));
+        MapManager.instance.GetTileInfo(cell_index).AddBox(this);
 
         Vector3 step = target_position - transform.position;
         while (step.magnitude > 0.1f)
@@ -84,8 +78,6 @@ public class MovableBox : Box
 
         rigidbody2d.bodyType = RigidbodyType2D.Dynamic;
 
-        cell_index = MapManager.instance.GetClosestCellIndex(new Vector2(transform.position.x, transform.position.y));
-        MapManager.instance.GetTileInfo(cell_index).AddBox(this);
 
 
         is_moving = false;
@@ -95,5 +87,23 @@ public class MovableBox : Box
     {
         transform.position = MapManager.instance.GetCellPosition(cell_index);
         rigidbody2d.velocity = Vector3.zero;
+    }
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            if (!is_moving)
+            {
+                displacement = rigidbody2d.position - (Vector2)MapManager.instance.GetCellPosition(cell_index);
+                if (displacement.x > moving_tirigger_distance) { MoveTo(cell_index + Vector2Int.right); }
+                else if (displacement.x < -moving_tirigger_distance) { MoveTo(cell_index + Vector2Int.left); }
+                else if (displacement.y > moving_tirigger_distance) { MoveTo(cell_index + Vector2Int.up); }
+                else if (displacement.y < -moving_tirigger_distance) { MoveTo(cell_index + Vector2Int.down); }
+                else //if(displacement.magnitude > 0.05f)
+                {
+                    ResetPosition();
+                }
+            }
+        }
     }
 }
