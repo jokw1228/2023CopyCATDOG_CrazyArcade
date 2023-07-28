@@ -122,13 +122,6 @@ public class Player1 : Player
                         GenerateWind(direction);
                         active_item_slot = ActiveItem.none;
                         break;
-                    case ActiveItem.laser:
-
-                        break;
-                    case ActiveItem.dash:
-                        Dash(direction);
-                        active_item_slot = ActiveItem.none;
-                        break;
                 }
 
             }
@@ -291,13 +284,6 @@ public class Player1 : Player
                         GenerateWind(direction);
                         active_item_slot = ActiveItem.none;
                         break;
-                    case ActiveItem.laser:
-
-                        break;
-                    case ActiveItem.dash:
-                        Dash(direction);
-                        active_item_slot = ActiveItem.none;
-                        break;
                 }
 
             }
@@ -398,13 +384,6 @@ public class Player1 : Player
                 {
                     case ActiveItem.wind:
                         GenerateWind(direction);
-                        active_item_slot = ActiveItem.none;
-                        break;
-                    case ActiveItem.laser:
-
-                        break;
-                    case ActiveItem.dash:
-                        Dash(direction);
                         active_item_slot = ActiveItem.none;
                         break;
                 }

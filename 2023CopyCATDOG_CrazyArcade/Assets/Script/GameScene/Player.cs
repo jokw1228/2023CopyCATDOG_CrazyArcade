@@ -20,16 +20,6 @@ public class Player : MonoBehaviour
         wind_instance = Instantiate<GameObject>(wind, MapManager.instance.GetCellPosition(cell_index), Quaternion.identity);
         wind_instance.GetComponent<Wind>().direction = direction;
     }
-    public GameObject Laser;
-    protected  void GenerateLaser(Vector2 position, MapManager.Direction direction)
-    {
-
-    }
-    protected void Dash(MapManager.Direction direction)
-    {
-        Debug.Log("use dash");
-        //GetComponent<Rigidbody2D>().MovePosition((Vector2)transform.position + MapManager.GetVector2(direction) * 2);
-    }
     //º¯¼öµé
     public enum State
     {
@@ -57,7 +47,7 @@ public class Player : MonoBehaviour
     public float Standby_timer = 0;
     public float death_timer = 0;
 
-    protected enum ActiveItem { none, needle, wind, laser ,dash}
+    protected enum ActiveItem { none, needle, wind}
     protected ActiveItem active_item_slot = ActiveItem.none;
 
     public bool ballon_touched =false;
@@ -111,13 +101,5 @@ public class Player : MonoBehaviour
     public void GainWind()
     {
         active_item_slot = ActiveItem.wind;
-    }
-    public void GainrLaser()
-    {
-        active_item_slot = ActiveItem.laser;
-    }
-    public void GainDash()
-    {
-        active_item_slot = ActiveItem.dash;
     }
 }
